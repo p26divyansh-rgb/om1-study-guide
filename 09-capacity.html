@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Strategic Capacity Management — OM-I Study Guide</title>
+<link rel="stylesheet" href="styles.css">
+
+</head>
+<body>
+<div class="topbar">
+  <a class="brand" href="index.html">OM-I <span>Study Guide</span></a>
+  <span class="crumb">/ <strong>Strategic Capacity Management</strong></span>
+  <div class="spacer"></div>
+  <select class="jump" onchange="if(this.value) window.location.href=this.value">
+    <option value="">Jump to topic…</option>
+    <option value="01-intro.html" >Introduction to Operations Management</option><option value="02-terminology.html" >Terminology & Little's Law</option><option value="03-codp.html" >CODP & Manufacturing Strategy</option><option value="04-process-matrix.html" >Product/Service–Process Matrix</option><option value="05-layouts.html" >Layouts & Assembly Line Balancing</option><option value="06-mass-customization.html" >Mass Customization</option><option value="07-tps-lean-jit.html" >Toyota Production System, Lean & JIT</option><option value="08-suppliers.html" >Supplier Relationships</option><option value="09-capacity.html" selected>Strategic Capacity Management</option><option value="10-bullwhip.html" >Bullwhip Effect & Supply Chain</option><option value="11-project-management.html" >Project Management: CPM & Crashing</option><option value="12-worked-examples.html" >Worked Numericals</option>
+  </select>
+  <a class="tb-link" href="index.html">🏠 Home</a>
+  <a class="tb-link quiz" href="quiz.html">🎯 Quiz</a>
+</div>
+<main>
+<div class="page-head">
+  <h1><span class="num">9</span> Strategic Capacity Management <span class="examtag">Lead/Lag favorite</span></h1>
+  <div class="subtitle">Topic 9 of 12 &middot; Time horizons, economies of scale, and the classic lead-vs-lag capacity strategy question.</div>
+</div><p><strong>Operations Strategy</strong> = the plan for reconciling market requirements with operations resources. Four decision areas: Capacity, Supply network, Process technology, Development &amp; organisation — judged against 5 customer priorities: quality, speed, dependability, flexibility, cost.</p>
+
+    <p><strong>Capacity</strong> = the throughput/maximum amount a facility can hold, receive, store, or produce in a period. It sets fixed costs and determines whether demand can be met.</p>
+
+    <h3>Three Time Horizons for Capacity Decisions</h3>
+    <table>
+      <tr><th>Horizon</th><th>What you can do</th><th>Examples</th></tr>
+      <tr><td><strong>Short-range</strong></td><td>Use existing capacity better (capacity itself is hard to change)</td><td>Schedule jobs, schedule staff, allocate machinery</td></tr>
+      <tr><td><strong>Intermediate-range</strong></td><td>Moderately adjust capacity</td><td>Subcontract, add shifts/personnel/equipment, build or use inventory</td></tr>
+      <tr><td><strong>Long-range</strong></td><td>Make big, slow-to-reverse capacity changes</td><td>Build new facilities, buy long-lead-time equipment</td></tr>
+    </table>
+
+    <h3>Strategic Capacity Decisions</h3>
+    <ul>
+      <li><strong>What type of fixed capacity?</strong> Manual labor vs. semi-automated vs. fully automated.</li>
+      <li><strong>When/how much to expand?</strong> (see lead/lag below)</li>
+      <li><strong>Where to locate capacity?</strong> Labour, raw materials, market proximity, transport, infrastructure, taxes, political risk, environment.</li>
+    </ul>
+
+    <h3>Managing Demand vs. Capacity Mismatches</h3>
+    <table>
+      <tr><th>Situation</th><th>Short-term fix</th><th>Long-term fix</th></tr>
+      <tr><td>Demand &gt; Capacity</td><td>Raise prices, extend lead times/wait</td><td>Increase capacity</td></tr>
+      <tr><td>Capacity &gt; Demand</td><td>Stimulate demand via marketing/product changes</td><td>Divest / repurpose capacity</td></tr>
+      <tr><td>Seasonal demand</td><td>Offer complementary products that sell in the off-season</td><td>Build flexible/multi-use capacity</td></tr>
+    </table>
+
+    <h3>Economies &amp; Diseconomies of Scale</h3>
+    <p>As output grows toward an optimal size, average unit cost falls (fixed costs spread over more units) = <strong>economies of scale</strong>. Beyond the optimal size, average cost starts rising again (coordination/complexity costs) = <strong>diseconomies of scale</strong>. Classic example: a 25-room motel has higher unit cost than a 50-room motel, but a 75-room motel may again be less efficient to manage. There's a "sweet spot" size.</p>
+
+    <h3>Key Capacity Planning Considerations</h3>
+    <ol>
+      <li>Forecast demand accurately.</li>
+      <li>Understand technology &amp; capacity increments (capacity often comes in fixed-size "chunks" — you can't buy half a machine).</li>
+      <li>Find the optimal operating volume.</li>
+      <li>Build flexibility for future change.</li>
+    </ol>
+
+    <h3>Should Capacity LEAD or LAG Demand? <span class="examtag">Frequently tested</span></h3>
+    <table>
+      <tr><th>Strategy</th><th>Pros</th><th>Cons</th></tr>
+      <tr><td><strong>Lead demand</strong> (build ahead of confirmed need)</td><td>Captures fast-growing demand, avoids lost sales, grabs early market share</td><td>Risk of costly unused/idle capacity if demand disappoints</td></tr>
+      <tr><td><strong>Lag demand</strong> (expand only after demand is confirmed)</td><td>Lower risk, can adopt newer tech later, avoids overspending</td><td>May fail to meet demand short-term, risk of losing market share</td></tr>
+      <tr><td><strong>Middle ground</strong></td><td>Lead in small incremental steps, or track an average level (sometimes ahead, sometimes behind)</td><td>Balances risk vs. responsiveness</td></tr>
+    </table>
+    <div class="note"><strong>Match strategy to product type:</strong> Custom/low-volume/made-to-order operations (bespoke tailoring, custom engineering) should generally <strong>LEAD</strong> demand and stay flexible. Standard/high-volume/made-to-stock commodities (bottled water) should generally <strong>LAG</strong> demand and focus on low cost.</div>
+
+    <h3>Capacity Needs Across the Product Life Cycle</h3>
+    <table>
+      <tr><th>Stage</th><th>What's happening</th><th>Capacity/Ops focus</th></tr>
+      <tr><td>Introduction</td><td>Product is new</td><td>Grab market share; frequent design changes; short, costly runs</td></tr>
+      <tr><td>Growth</td><td>Sales rising fast</td><td>Increase capacity; improve forecasting; strengthen distribution</td></tr>
+      <tr><td>Maturity</td><td>Sales level off</td><td>Optimize capacity; shift to cost-cutting, long stable runs</td></tr>
+      <tr><td>Decline</td><td>Sales falling</td><td>Cost control critical; industry often over-capacity; cut weak products</td></tr>
+    </table>
+    <p><em>Examples: floppy disks = classic decline stage; flat-screen monitors/DVDs were once "introduction".</em></p>
+  <div class="pagenav"><a class="prev" href="08-suppliers.html"><span class="dir">← Previous</span><span class="title">Supplier Relationships</span></a><a class="next" href="10-bullwhip.html"><span class="dir">Next →</span><span class="title">Bullwhip Effect & Supply Chain</span></a></div>
+<footer>OM-I Study Guide &middot; Built from your course pack &amp; past-year papers (2023, 2024, 2025)</footer>
+</main>
+<div class="backtop" onclick="window.scrollTo({top:0,behavior:'smooth'})" title="Back to top">↑</div>
+</body>
+</html>

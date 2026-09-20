@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Toyota Production System, Lean & JIT — OM-I Study Guide</title>
+<link rel="stylesheet" href="styles.css">
+
+</head>
+<body>
+<div class="topbar">
+  <a class="brand" href="index.html">OM-I <span>Study Guide</span></a>
+  <span class="crumb">/ <strong>Toyota Production System, Lean & JIT</strong></span>
+  <div class="spacer"></div>
+  <select class="jump" onchange="if(this.value) window.location.href=this.value">
+    <option value="">Jump to topic…</option>
+    <option value="01-intro.html" >Introduction to Operations Management</option><option value="02-terminology.html" >Terminology & Little's Law</option><option value="03-codp.html" >CODP & Manufacturing Strategy</option><option value="04-process-matrix.html" >Product/Service–Process Matrix</option><option value="05-layouts.html" >Layouts & Assembly Line Balancing</option><option value="06-mass-customization.html" >Mass Customization</option><option value="07-tps-lean-jit.html" selected>Toyota Production System, Lean & JIT</option><option value="08-suppliers.html" >Supplier Relationships</option><option value="09-capacity.html" >Strategic Capacity Management</option><option value="10-bullwhip.html" >Bullwhip Effect & Supply Chain</option><option value="11-project-management.html" >Project Management: CPM & Crashing</option><option value="12-worked-examples.html" >Worked Numericals</option>
+  </select>
+  <a class="tb-link" href="index.html">🏠 Home</a>
+  <a class="tb-link quiz" href="quiz.html">🎯 Quiz</a>
+</div>
+<main>
+<div class="page-head">
+  <h1><span class="num">7</span> Toyota Production System, Lean & JIT <span class="examtag">Very high-yield</span></h1>
+  <div class="subtitle">Topic 7 of 12 &middot; Muda/Muri/Mura, Jidoka, Heijunka, 5S, Kaizen, 5 Whys, and all 14 Toyota Way principles.</div>
+</div><p>TPS rests on <strong>two pillars</strong>: <strong>Just-in-Time (JIT)</strong> and <strong>Jidoka</strong>.</p>
+
+    <h3>The 3 M's of Waste</h3>
+    <div class="grid2">
+      <div class="card"><strong>Muda</strong> (無駄) — Waste: anything not adding value. 7 classic types: overproduction, waiting, transportation, inefficient/over-processing, excess inventory, unnecessary motion, defects.</div>
+      <div class="card"><strong>Muri</strong> — Overburden: pushing people/equipment beyond natural limits.</div>
+    </div>
+    <div class="card"><strong>Mura</strong> — Unevenness: inconsistent workload/demand fluctuations. (Heijunka directly fights Mura.)</div>
+
+    <h3>Push vs. Pull Systems</h3>
+    <ul>
+      <li><strong>Push:</strong> material is pushed into downstream stations regardless of whether resources/demand are ready (produce-to-forecast).</li>
+      <li><strong>Pull:</strong> material is pulled into a station only when actually needed — driven by real, downstream demand. JIT = producing only what is needed, when needed, in the amount needed. <strong>Kanban cards</strong> are the visual signal that triggers a pull.</li>
+    </ul>
+
+    <h3>Heijunka — Production Leveling</h3>
+    <p>Instead of large batches of one model at a time (AAA→BB→CC), Toyota interleaves a mixed sequence each day (A→B→A→C→A→B) that matches the actual mix of customer demand. This levels workload for the plant and its suppliers, and combats Mura and Muri.</p>
+
+    <h3>Jidoka — "Automation with a Human Touch"</h3>
+    <p>Machines/workers can detect an abnormality and <strong>stop the line immediately</strong> so defects are caught at the source, rather than passed downstream. Origin: Sakichi Toyoda's automatic loom that stopped itself when a thread broke.</p>
+    <ul>
+      <li><strong>Andon</strong> — a visual signal (lamp/cord) a worker pulls to flag a problem and stop the line: Red = stoppage, Yellow = call for help, Green = normal.</li>
+      <li><strong>Poka-Yoke</strong> — mistake-proofing devices (sensors, jigs, alignment pins) designed to prevent defects before they occur (goal: zero defects) — different from Statistical Quality Control, which finds defects <em>after</em> they occur.</li>
+    </ul>
+
+    <h3>Setup Time Reduction (SMED thinking)</h3>
+    <ul>
+      <li><strong>Internal setup</strong>: must be done while the machine is stopped.</li>
+      <li><strong>External setup</strong>: can be done while the machine is still running.</li>
+      <li>Strategy: (1) convert internal setup to external where possible, (2) then streamline what remains internal. Lower setups enable smaller batch sizes without losing throughput.</li>
+    </ul>
+
+    <h3>Kaizen, 5 Whys, PDCA</h3>
+    <ul>
+      <li><strong>Kaizen</strong>: continuous, incremental improvement; a "Kaizen event" is a focused ~5-day team effort to fix a specific process.</li>
+      <li><strong>5 Whys</strong>: ask "why" repeatedly (typically 5×) to drill down from a symptom to its root cause, rather than treating surface symptoms.</li>
+      <li><strong>PDCA / Deming Cycle</strong>: Plan (go to Gemba — the real place — observe the real thing/Gembutsu, get real facts/Genjitsu) → Do (implement, create models of excellence) → Check (align with long-term direction) → Act (sustain &amp; accelerate improvements).</li>
+    </ul>
+
+    <h3>5S Workplace Organization</h3>
+    <table>
+      <tr><th>Japanese</th><th>English</th><th>Meaning</th></tr>
+      <tr><td>Seiri</td><td>Sort</td><td>Keep only what's necessary</td></tr>
+      <tr><td>Seiton</td><td>Straighten/Set in order</td><td>A place for everything</td></tr>
+      <tr><td>Seiso</td><td>Shine/Sweep</td><td>Clean and keep clean</td></tr>
+      <tr><td>Seiketsu</td><td>Standardize</td><td>Apply the first 3S's consistently, plant-wide</td></tr>
+      <tr><td>Shitsuke</td><td>Sustain/Self-discipline</td><td>Make it a habit</td></tr>
+    </table>
+    <p>5S+1S(Safety)=6S; +2S(Safety &amp; Security)=7S. A "Red Tag Attack" flags unused items (30+ days) for removal unless justified.</p>
+
+    <h3>The 14 Toyota Way Principles (grouped)</h3>
+    <ol>
+      <li><strong>Long-term philosophy</strong> over short-term financial gains.</li>
+      <li><strong>Continuous process flow</strong> to surface problems (eliminate Muda).</li>
+      <li><strong>Pull systems / JIT</strong> — avoid overproduction.</li>
+      <li><strong>Heijunka</strong> — level the workload (fight Muda, Muri, Mura).</li>
+      <li><strong>Jidoka</strong> — stop and fix problems to get quality right the first time.</li>
+      <li><strong>Standardized work</strong> as the basis for continuous improvement (+ Poka-Yoke).</li>
+      <li><strong>Visual controls / 5S</strong> so no problem is hidden.</li>
+      <li><strong>Reliable, thoroughly-tested technology</strong> that serves people and process — not tech for its own sake.</li>
+      <li><strong>Grow leaders</strong> who live the philosophy and teach it.</li>
+      <li><strong>Develop exceptional people &amp; teams</strong> who both do the work and improve it.</li>
+      <li><strong>Respect &amp; develop suppliers</strong> as long-term partners, not adversaries.</li>
+      <li><strong>Genchi Genbutsu</strong> — "go and see" for yourself rather than relying only on reports.</li>
+      <li><strong>Decide slowly by consensus, implement rapidly</strong> (nemawashi).</li>
+      <li><strong>Become a learning organization</strong> through relentless reflection (Hansei) and Kaizen.</li>
+    </ol>
+
+    <h3>Total Productive Maintenance (TPM) &amp; Lean Attributes</h3>
+    <p>Lean producers: use JIT to cut inventory, aim for a perfect part every time, reduce space needs, build close/educated supplier relationships, eliminate non-value-add activities, build workforce flexibility (fewer job classes, cross-training), and apply TPM (proactive/preventive equipment maintenance to avoid breakdowns that would stall a low-inventory, tightly-coupled line).</p>
+  <div class="pagenav"><a class="prev" href="06-mass-customization.html"><span class="dir">← Previous</span><span class="title">Mass Customization</span></a><a class="next" href="08-suppliers.html"><span class="dir">Next →</span><span class="title">Supplier Relationships</span></a></div>
+<footer>OM-I Study Guide &middot; Built from your course pack &amp; past-year papers (2023, 2024, 2025)</footer>
+</main>
+<div class="backtop" onclick="window.scrollTo({top:0,behavior:'smooth'})" title="Back to top">↑</div>
+</body>
+</html>

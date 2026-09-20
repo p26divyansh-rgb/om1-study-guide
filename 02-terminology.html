@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Terminology & Little's Law — OM-I Study Guide</title>
+<link rel="stylesheet" href="styles.css">
+
+</head>
+<body>
+<div class="topbar">
+  <a class="brand" href="index.html">OM-I <span>Study Guide</span></a>
+  <span class="crumb">/ <strong>Terminology & Little's Law</strong></span>
+  <div class="spacer"></div>
+  <select class="jump" onchange="if(this.value) window.location.href=this.value">
+    <option value="">Jump to topic…</option>
+    <option value="01-intro.html" >Introduction to Operations Management</option><option value="02-terminology.html" selected>Terminology & Little's Law</option><option value="03-codp.html" >CODP & Manufacturing Strategy</option><option value="04-process-matrix.html" >Product/Service–Process Matrix</option><option value="05-layouts.html" >Layouts & Assembly Line Balancing</option><option value="06-mass-customization.html" >Mass Customization</option><option value="07-tps-lean-jit.html" >Toyota Production System, Lean & JIT</option><option value="08-suppliers.html" >Supplier Relationships</option><option value="09-capacity.html" >Strategic Capacity Management</option><option value="10-bullwhip.html" >Bullwhip Effect & Supply Chain</option><option value="11-project-management.html" >Project Management: CPM & Crashing</option><option value="12-worked-examples.html" >Worked Numericals</option>
+  </select>
+  <a class="tb-link" href="index.html">🏠 Home</a>
+  <a class="tb-link quiz" href="quiz.html">🎯 Quiz</a>
+</div>
+<main>
+<div class="page-head">
+  <h1><span class="num">2</span> Terminology & Little's Law <span class="examtag">High-yield</span></h1>
+  <div class="subtitle">Topic 2 of 12 &middot; Flow rate, flow time, inventory, utilization, bottlenecks — and the most important formula in the course.</div>
+</div><p>This is the single most tested block of the course — almost every numerical problem (queueing, capacity, line balancing) is built on these definitions.</p>
+
+    <h3>Core Process Flow Measures</h3>
+    <table>
+      <tr><th>Term</th><th>Definition</th><th>Unit</th></tr>
+      <tr><td><strong>Flow Rate / Throughput (R)</strong></td><td>Average number of flow units passing through the process per unit time</td><td>units/time</td></tr>
+      <tr><td><strong>Flow Time / Throughput Time / Lead Time (T)</strong></td><td>Average time a unit spends within the system (from entry to exit)</td><td>time</td></tr>
+      <tr><td><strong>Inventory / WIP (I)</strong></td><td>Average number of flow units present within the process boundaries at any time</td><td>units</td></tr>
+      <tr><td><strong>Cycle Time (CT)</strong></td><td>Average time between completion of two successive units = 1/R</td><td>time/unit</td></tr>
+      <tr><td><strong>Capacity</strong></td><td>Maximum output achievable under given resources &amp; time</td><td>units/time</td></tr>
+      <tr><td><strong>Utilization</strong></td><td>Flow Rate / Capacity — how much of available capacity is actually used</td><td>%</td></tr>
+      <tr><td><strong>Implied Utilization</strong></td><td>Demand / Capacity — how much capacity would be needed to meet demand</td><td>%</td></tr>
+      <tr><td><strong>Bottleneck</strong></td><td>The process step/resource with the lowest capacity — it limits overall system output. Bottlenecks <em>can shift</em> if the mix or demand changes.</td><td>—</td></tr>
+    </table>
+
+    <h3>Little's Law — THE most important formula in the course</h3>
+    <div class="formula"><span class="label">Little's Law</span>
+I = R × T
+(Inventory = Throughput/Flow Rate × Flow Time)
+
+Rearranged:  T = I / R      R = I / T
+Turnover (inventory turns) = R / I = 1 / T
+    </div>
+
+    <div class="example">
+      <span class="tag">Worked Example — Material Flow</span>
+      <p>A restaurant processes 5,000 kg of potatoes/week. Average raw-potato inventory = 2,500 kg. Find average flow time.</p>
+      <p><strong>R = 5,000 kg/wk, I = 2,500 kg → T = I/R = 2,500/5,000 = 0.5 week</strong></p>
+    </div>
+    <div class="example">
+      <span class="tag">Worked Example — Customer Flow</span>
+      <p>Restaurant serves 1,500 customers/day (15-hr day → 100/hr). On average 75 customers are inside. Find average time spent and turnover.</p>
+      <p><strong>R = 100/hr, I = 75 → T = 75/100 = 0.75 hr = 45 min</strong>. Turnover = R/I = 100/75 = 1.33/hr.</p>
+    </div>
+    <div class="example">
+      <span class="tag">Worked Example — Job Flow (solve for I)</span>
+      <p>An insurance office processes 10,000 claims/year; average processing time = 3 weeks (50-week year). Find average claims "in process".</p>
+      <p><strong>R = 10,000/yr, T = 3/50 yr → I = R×T = 10,000 × 3/50 = 600 claims</strong></p>
+    </div>
+    <div class="example">
+      <span class="tag">Consistency check (classic trick question)</span>
+      <p>A GM says inventory turns 3×/year, and everything clears the dock within 6 weeks. Consistent?</p>
+      <p>Turnover = 3/yr → T = 1/3 year ≈ 17.3 weeks. But claimed T = 6 weeks. <strong>17.3 ≠ 6 → statements are inconsistent.</strong> Always convert to the same time unit before comparing!</p>
+    </div>
+
+    <h3>Manufacturing / Order Fulfilment Strategies</h3>
+    <table>
+      <tr><th>Strategy</th><th>Meaning</th><th>Example</th></tr>
+      <tr><td><strong>MTS</strong> (Make-to-Stock)</td><td>Made in advance, held in inventory before order arrives</td><td>Biscuits, soap</td></tr>
+      <tr><td><strong>ATO</strong> (Assemble-to-Order)</td><td>Standard sub-components pre-built; final assembly after order</td><td>Computers (Dell)</td></tr>
+      <tr><td><strong>MTO</strong> (Make-to-Order)</td><td>Production starts only after the order is received</td><td>Custom furniture</td></tr>
+      <tr><td><strong>ETO</strong> (Engineer-to-Order)</td><td>Product is designed AND made specifically for the customer</td><td>Custom industrial machinery, wind turbines</td></tr>
+    </table>
+
+    <h3>Customer Order Decoupling Point (CODP)</h3>
+    <p>The CODP is the point in the value chain up to which a customer's actual order penetrates (everything before is driven by <strong>forecast/planning</strong>; everything after is driven by <strong>actual demand</strong>). Moving the CODP upstream (toward MTS) improves delivery speed but increases inventory risk; moving it downstream (toward ETO) reduces inventory risk but increases lead time.</p>
+    <div class="grid2">
+      <div class="card"><strong>Market-driven requirements</strong> pushing DP downstream (later):<br>required delivery reliability, required delivery time, predictability &amp; specificity of demand</div>
+      <div class="card"><strong>Process/stock constraints</strong> pushing DP upstream (earlier):<br>long lead times, high changeover costs, poor process control, need for high reliability, cost of stock-holding, risk of obsolescence</div>
+    </div>
+  <div class="pagenav"><a class="prev" href="01-intro.html"><span class="dir">← Previous</span><span class="title">Introduction to Operations Management</span></a><a class="next" href="03-codp.html"><span class="dir">Next →</span><span class="title">CODP & Manufacturing Strategy</span></a></div>
+<footer>OM-I Study Guide &middot; Built from your course pack &amp; past-year papers (2023, 2024, 2025)</footer>
+</main>
+<div class="backtop" onclick="window.scrollTo({top:0,behavior:'smooth'})" title="Back to top">↑</div>
+</body>
+</html>

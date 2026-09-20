@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Layouts & Assembly Line Balancing — OM-I Study Guide</title>
+<link rel="stylesheet" href="styles.css">
+
+</head>
+<body>
+<div class="topbar">
+  <a class="brand" href="index.html">OM-I <span>Study Guide</span></a>
+  <span class="crumb">/ <strong>Layouts & Assembly Line Balancing</strong></span>
+  <div class="spacer"></div>
+  <select class="jump" onchange="if(this.value) window.location.href=this.value">
+    <option value="">Jump to topic…</option>
+    <option value="01-intro.html" >Introduction to Operations Management</option><option value="02-terminology.html" >Terminology & Little's Law</option><option value="03-codp.html" >CODP & Manufacturing Strategy</option><option value="04-process-matrix.html" >Product/Service–Process Matrix</option><option value="05-layouts.html" selected>Layouts & Assembly Line Balancing</option><option value="06-mass-customization.html" >Mass Customization</option><option value="07-tps-lean-jit.html" >Toyota Production System, Lean & JIT</option><option value="08-suppliers.html" >Supplier Relationships</option><option value="09-capacity.html" >Strategic Capacity Management</option><option value="10-bullwhip.html" >Bullwhip Effect & Supply Chain</option><option value="11-project-management.html" >Project Management: CPM & Crashing</option><option value="12-worked-examples.html" >Worked Numericals</option>
+  </select>
+  <a class="tb-link" href="index.html">🏠 Home</a>
+  <a class="tb-link quiz" href="quiz.html">🎯 Quiz</a>
+</div>
+<main>
+<div class="page-head">
+  <h1><span class="num">5</span> Layouts & Assembly Line Balancing <span class="examtag">Numerical-heavy</span></h1>
+  <div class="subtitle">Topic 5 of 12 &middot; Product/process/cellular/fixed layouts, the 8-step line-balancing procedure, labor content.</div>
+</div><h3>Types of Layout</h3>
+    <table>
+      <tr><th>Layout</th><th>Description</th><th>Example</th></tr>
+      <tr><td><strong>Product Layout</strong></td><td>Equipment arranged in the exact sequence of production steps; product moves station to station</td><td>Car assembly line</td></tr>
+      <tr><td><strong>Process Layout</strong></td><td>Similar machines/functions grouped together (departments); products/patients move between departments as needed</td><td>Hospital, machine shop</td></tr>
+      <tr><td><strong>Cellular Layout</strong></td><td>Different machine types grouped into a "cell" that produces a family of similar products</td><td>Furniture manufacturing cell</td></tr>
+      <tr><td><strong>Fixed-Position Layout</strong></td><td>The product stays in one place; workers, equipment &amp; materials come to it</td><td>Ship, aircraft, building construction</td></tr>
+    </table>
+
+    <h3>Labor Specialization on the Assembly Line</h3>
+    <div class="grid2">
+      <div class="card"><strong>Advantages</strong><br>Management: rapid training, easy recruiting, high output from simple repetitive work, close control of workflow.<br>Labor: little education needed, easy to learn the job.</div>
+      <div class="card"><strong>Disadvantages</strong><br>Management: reduced improvement (limited worker perspective), low flexibility to change the line, difficulty controlling quality.<br>Labor: boredom, little control over pace → fatigue/frustration, little chance to advance.</div>
+    </div>
+
+    <h3>Spatial Configurations</h3>
+    <p><strong>Straight Line Design</strong> vs. <strong>U-Shaped Design</strong>. U-shaped lines let one worker handle stations at both the start and end of the line, improve visibility/communication between workers, and make it easier to rebalance the line when demand (and hence required staffing) changes.</p>
+
+    <h3>Assembly Line Balancing — the 8-Step Procedure <span class="examtag">Must know</span></h3>
+    <ol>
+      <li>Draw the precedence diagram (tasks + predecessor relationships).</li>
+      <li>Determine required <strong>workstation cycle time</strong> = Production time available per day / Required output per day.</li>
+      <li>Determine theoretical minimum number of workstations = (Sum of all task times) / Cycle time.</li>
+      <li>Select an assignment rule (e.g., longest task time first, most followers first).</li>
+      <li>Assign tasks one at a time to the first workstation until the sum of task times equals the cycle time, or no other task is feasible (predecessor/time constraint).</li>
+      <li>Repeat step 5 for the next workstation until all tasks are assigned.</li>
+      <li>Compute <strong>line efficiency</strong>.</li>
+      <li>If efficiency is unsatisfactory, rebalance using a different rule.</li>
+    </ol>
+
+    <div class="formula"><span class="label">Line Balancing Formulas</span>
+Cycle Time (CT) = Production time available per day / Required units per day
+
+Theoretical Min. Workstations (N) = ΣTask times / Cycle Time   (round UP)
+
+Line Efficiency = ΣTask times / (Actual no. of workstations × Cycle Time)
+
+Balance Delay = 1 − Efficiency
+
+Labour Content = Sum of all labour (task) times to make one unit
+
+Available Labour Time = Number of workers × Cycle Time
+
+Labour Utilization = Labour Content / Available Labour Time
+    </div>
+
+    <div class="note"><strong>Zoning &amp; personnel constraints</strong> (as tested in the 2025 "Artisan Shirt" question): a single workstation often cannot mix tasks from different process zones (e.g., Cutting/Stitching/Finishing), and a workstation's skill requirement = the highest-skilled task assigned to it (a senior worker CAN do junior tasks, not vice-versa). Always re-verify max daily output, labor cost/unit, and any KPI after re-balancing.</div>
+
+    <h3>Process Batch vs. Transfer Batch</h3>
+    <ul>
+      <li><strong>Process Batch</strong>: number of units processed together at one stage before changing over to a different product/batch.</li>
+      <li><strong>Transfer Batch</strong>: number of units physically moved together from one stage to the next (can be smaller than the process batch — moving in smaller transfer batches overlaps stages and reduces flow time, even though process batch/capacity stays the same).</li>
+    </ul>
+  <div class="pagenav"><a class="prev" href="04-process-matrix.html"><span class="dir">← Previous</span><span class="title">Product/Service–Process Matrix</span></a><a class="next" href="06-mass-customization.html"><span class="dir">Next →</span><span class="title">Mass Customization</span></a></div>
+<footer>OM-I Study Guide &middot; Built from your course pack &amp; past-year papers (2023, 2024, 2025)</footer>
+</main>
+<div class="backtop" onclick="window.scrollTo({top:0,behavior:'smooth'})" title="Back to top">↑</div>
+</body>
+</html>

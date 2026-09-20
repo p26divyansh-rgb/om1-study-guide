@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Project Management: CPM & Crashing — OM-I Study Guide</title>
+<link rel="stylesheet" href="styles.css">
+
+</head>
+<body>
+<div class="topbar">
+  <a class="brand" href="index.html">OM-I <span>Study Guide</span></a>
+  <span class="crumb">/ <strong>Project Management: CPM & Crashing</strong></span>
+  <div class="spacer"></div>
+  <select class="jump" onchange="if(this.value) window.location.href=this.value">
+    <option value="">Jump to topic…</option>
+    <option value="01-intro.html" >Introduction to Operations Management</option><option value="02-terminology.html" >Terminology & Little's Law</option><option value="03-codp.html" >CODP & Manufacturing Strategy</option><option value="04-process-matrix.html" >Product/Service–Process Matrix</option><option value="05-layouts.html" >Layouts & Assembly Line Balancing</option><option value="06-mass-customization.html" >Mass Customization</option><option value="07-tps-lean-jit.html" >Toyota Production System, Lean & JIT</option><option value="08-suppliers.html" >Supplier Relationships</option><option value="09-capacity.html" >Strategic Capacity Management</option><option value="10-bullwhip.html" >Bullwhip Effect & Supply Chain</option><option value="11-project-management.html" selected>Project Management: CPM & Crashing</option><option value="12-worked-examples.html" >Worked Numericals</option>
+  </select>
+  <a class="tb-link" href="index.html">🏠 Home</a>
+  <a class="tb-link quiz" href="quiz.html">🎯 Quiz</a>
+</div>
+<main>
+<div class="page-head">
+  <h1><span class="num">11</span> Project Management: CPM & Crashing <span class="examtag">Full numerical every year</span></h1>
+  <div class="subtitle">Topic 11 of 12 &middot; Forward/backward pass, slack, critical path, crashing rules and worked cost-slope examples.</div>
+</div><p>A <strong>project</strong> is a unique, one-time set of operations to accomplish objectives within a limited time/cost frame.</p>
+
+    <h3>Key Terms</h3>
+    <div class="pill">Work Breakdown Structure (WBS)</div>
+    <div class="pill">Precedence relations</div>
+    <div class="pill">Network diagram</div>
+    <div class="pill">Early Start / Forward Pass</div>
+    <div class="pill">Late Start / Backward Pass</div>
+    <div class="pill">Gantt chart</div>
+    <div class="pill">Slack / Float</div>
+    <div class="pill">Critical Path</div>
+
+    <div class="formula"><span class="label">Critical Path Method — core formulas</span>
+FORWARD PASS (left to right): computes Earliest Start (ES) and Earliest Finish (EF)
+  ES(activity) = max(EF of all its predecessors)      [ES = 0 for start activities]
+  EF(activity) = ES + Duration
+
+BACKWARD PASS (right to left): computes Latest Start (LS) and Latest Finish (LF)
+  LF(activity) = min(LS of all its successors)        [LF = Project duration, for end activities]
+  LS(activity) = LF − Duration
+
+SLACK (Float) = LS − ES  = LF − EF
+
+CRITICAL PATH = the longest path through the network = path where slack = 0 for every activity
+PROJECT DURATION = length (sum of durations) of the critical path
+    </div>
+
+    <div class="note"><strong>Exam fact (was literally MCQ #10 in 2025):</strong> the total slack of any activity <em>on</em> the critical path is <strong>always zero</strong> — that's the definition of "critical." The critical path itself is the <strong>longest</strong> path (not shortest), and represents the <strong>minimum</strong> possible project duration.</div>
+
+    <div class="example">
+      <span class="tag">Worked Example — Forward/Backward Pass</span>
+      <p>Activities: A(3, no pred) → D(5, pred A) → G(4, pred B,D,E); B(6, no pred); C(2, no pred) → E(2, pred C); A → F(7).</p>
+      <p>Forward pass gives EF: A=3, B=6, C=2, D=8, E=4, F=10, G=12 → <strong>project duration = 12 weeks.</strong></p>
+      <p>Backward pass from LF=12 gives slack: A=0, D=0, G=0 (critical path A–D–G); B has slack 2; C has slack 4; E has slack 4; F has slack 2.</p>
+      <p><strong>Critical Path = A → D → G, Duration = 12 weeks.</strong></p>
+    </div>
+
+    <h3>Project Crashing</h3>
+    <p><strong>Crashing</strong> = spending extra money to shorten a critical activity's duration, in order to shrink total project time (e.g., to avoid a late-delivery penalty).</p>
+    <div class="formula"><span class="label">Crashing rules</span>
+1. Only CRITICAL activities are worth crashing (shortening a non-critical activity doesn't shorten the project).
+2. Crash period-by-period (e.g., one week at a time), re-checking the critical path after each step.
+3. Pick the critical activity with the lowest Cost Slope = (Crash Cost − Normal Cost) / (Normal Time − Crash Time).
+4. Watch out for PARALLEL critical paths — once multiple paths become simultaneously critical, you may need to crash one activity on EACH parallel path (or a shared activity) to gain even one more week.
+    </div>
+    <div class="example">
+      <span class="tag">Worked Example — Crashing</span>
+      <p>Critical path A–D–G (12 weeks). Cost slopes: A=$5,000/wk, D=$4,000/wk, G=$7,000/wk. Cheapest is D → crash D by 1 week → project time = 11 weeks, cost = Normal($61,000) + $4,000 = $65,000.</p>
+      <p>Crash D again → path becomes 10 weeks, but now <strong>3 paths are simultaneously critical</strong>: A-D-G, B-G, A-F. To shrink further, cheapest combo is crashing F and G together ($3,000+$7,000) rather than crashing 3 separate activities — always check whether one shared activity (like A) can shorten multiple paths at once before crashing them individually.</p>
+    </div>
+
+    <h3>Uncertainty &amp; Risk in Projects</h3>
+    <ul>
+      <li>Every activity-time estimate rests on <strong>assumptions</strong> — CPM outputs are only as good as those assumptions.</li>
+      <li>The critical path is <strong>dynamic</strong> — it can shift as activities slip or are crashed.</li>
+      <li>A project manager's job goes well beyond running the CPM calculation.</li>
+    </ul>
+    <table>
+      <tr><th>Risk category</th><th>Examples</th></tr>
+      <tr><td>Financial</td><td>Penalty clauses, exchange-rate swings</td></tr>
+      <tr><td>Marketing</td><td>Demand/market changes, brand image</td></tr>
+      <tr><td>Technology</td><td>Tie-up/partner risk, obsolescence</td></tr>
+      <tr><td>Operations/Execution</td><td>Resource availability, delays in activity durations</td></tr>
+    </table>
+    <p><strong>Managing risk:</strong> maintain redundancy of resources, monitor &amp; report frequently, transfer risk (e.g., contracts/insurance), and share risk with partners.</p>
+  <div class="pagenav"><a class="prev" href="10-bullwhip.html"><span class="dir">← Previous</span><span class="title">Bullwhip Effect & Supply Chain</span></a><a class="next" href="12-worked-examples.html"><span class="dir">Next →</span><span class="title">Worked Numericals</span></a></div>
+<footer>OM-I Study Guide &middot; Built from your course pack &amp; past-year papers (2023, 2024, 2025)</footer>
+</main>
+<div class="backtop" onclick="window.scrollTo({top:0,behavior:'smooth'})" title="Back to top">↑</div>
+</body>
+</html>

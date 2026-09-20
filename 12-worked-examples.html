@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Worked Numericals — OM-I Study Guide</title>
+<link rel="stylesheet" href="styles.css">
+
+</head>
+<body>
+<div class="topbar">
+  <a class="brand" href="index.html">OM-I <span>Study Guide</span></a>
+  <span class="crumb">/ <strong>Worked Numericals</strong></span>
+  <div class="spacer"></div>
+  <select class="jump" onchange="if(this.value) window.location.href=this.value">
+    <option value="">Jump to topic…</option>
+    <option value="01-intro.html" >Introduction to Operations Management</option><option value="02-terminology.html" >Terminology & Little's Law</option><option value="03-codp.html" >CODP & Manufacturing Strategy</option><option value="04-process-matrix.html" >Product/Service–Process Matrix</option><option value="05-layouts.html" >Layouts & Assembly Line Balancing</option><option value="06-mass-customization.html" >Mass Customization</option><option value="07-tps-lean-jit.html" >Toyota Production System, Lean & JIT</option><option value="08-suppliers.html" >Supplier Relationships</option><option value="09-capacity.html" >Strategic Capacity Management</option><option value="10-bullwhip.html" >Bullwhip Effect & Supply Chain</option><option value="11-project-management.html" >Project Management: CPM & Crashing</option><option value="12-worked-examples.html" selected>Worked Numericals</option>
+  </select>
+  <a class="tb-link" href="index.html">🏠 Home</a>
+  <a class="tb-link quiz" href="quiz.html">🎯 Quiz</a>
+</div>
+<main>
+<div class="page-head">
+  <h1><span class="num">12</span> Worked Numericals </h1>
+  <div class="subtitle">Topic 12 of 12 &middot; Inventory build-up diagrams, batch/setup capacity trade-offs, and reading a full production system.</div>
+</div><h3>Inventory Build-Up Diagrams (Queueing over time)</h3>
+    <p>These questions give a time-varying <strong>arrival rate</strong> and a (possibly changing) <strong>service/processing capacity</strong>, and ask you to track the queue over time. Core method:</p>
+    <div class="formula"><span class="label">Queue tracking logic</span>
+For each time interval:
+  Change in Queue = Arrival Rate − Service (Capacity) Rate   [if positive → queue grows; if negative → queue shrinks, floor at 0]
+  Queue(end of interval) = Queue(start) + (Arrival Rate − Capacity) × interval length
+
+Peak Queue = the highest point on this cumulative build-up curve
+Longest wait = found by matching a specific unit's arrival point against the cumulative "departures" curve
+(This is precisely a Little's Law style diagram: the vertical gap between the cumulative-arrivals
+and cumulative-departures curves = instantaneous inventory/queue; the horizontal gap = wait time
+for the unit arriving at that point.)
+    </div>
+    <div class="example">
+      <span class="tag">Style of question (2025 exam: Delhi T3 security)</span>
+      <p>Arrivals vary in three time bands (25/min, then 40/min, then 20/min); capacity = 5 lanes × 5/min = 25/min, with 2 extra lanes triggered once queue &gt; 150, and a machine going offline for a period. You must (a) build the cumulative arrivals vs. departures diagram, (b) find peak queue &amp; when it occurs, (c) find the longest wait and which arrival experiences it, and (d) evaluate a "proactive" policy change (open extra lanes earlier) by comparing peak queue and max wait under both policies.</p>
+      <p><strong>Approach:</strong> break the timeline into pieces wherever arrival rate OR capacity changes; track cumulative queue at each breakpoint; the moment queue crosses a policy threshold (e.g., 150), capacity changes for subsequent intervals too.</p>
+    </div>
+
+    <h3>Batch Processing &amp; Setup-Time Capacity (e.g., Gene Cattie Enterprises case)</h3>
+    <p>When a single resource is shared by multiple products with a <strong>changeover/setup time</strong>, capacity depends on batch size:</p>
+    <div class="formula"><span class="label">Capacity with setup times</span>
+Time per batch = Setup time + (Batch size × Run time per unit)
+
+Effective Capacity (units/time) = Batch size / Time per batch
+
+⇒ Larger batches amortize the fixed setup time over more units → HIGHER effective capacity
+⇒ Smaller batches → more frequent setups → LOWER effective capacity, but LOWER flow time / WIP (Little's Law trade-off!)
+    </div>
+    <div class="note">This is the classic "batch size trade-off": bigger batches raise throughput capacity (fewer setups) but increase average inventory/WIP and flow time (Little's Law: I = R×T — units sit longer waiting for a full batch to complete). Line-balancing and CODP thinking both connect back to this same batch-size vs. flow-time trade-off.</div>
+
+    <h3>Reading a full production system as a chain of resources</h3>
+    <ol>
+      <li>Compute the (batch-adjusted) capacity of <strong>each</strong> resource/department independently.</li>
+      <li>The <strong>system bottleneck</strong> = the resource with the lowest capacity once you account for the actual product mix moving through it (a resource used by multiple products may have less capacity "left over" for one product than it looks like in isolation).</li>
+      <li>System throughput = bottleneck's capacity (you can never produce faster than your slowest necessary resource).</li>
+      <li>Use Little's Law (I = R×T) with the actual inventory data at each stage to compute total average flow time through the whole factory.</li>
+    </ol>
+  <div class="pagenav"><a class="prev" href="11-project-management.html"><span class="dir">← Previous</span><span class="title">Project Management: CPM & Crashing</span></a><a class="next" href="quiz.html"><span class="dir">Next →</span><span class="title">🎯 Take the MCQ Quiz</span></a></div>
+<footer>OM-I Study Guide &middot; Built from your course pack &amp; past-year papers (2023, 2024, 2025)</footer>
+</main>
+<div class="backtop" onclick="window.scrollTo({top:0,behavior:'smooth'})" title="Back to top">↑</div>
+</body>
+</html>

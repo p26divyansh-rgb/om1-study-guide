@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MCQ Quiz — OM-I Study Guide</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="topbar">
+  <a class="brand" href="index.html">OM-I <span>Study Guide</span></a>
+  <div class="spacer"></div>
+  <a class="tb-link" href="index.html">🏠 Home</a>
+  <a class="tb-link quiz" href="quiz.html">🎯 Quiz</a>
+</div>
+<main>
+<div class="page-head">
+  <h1><span class="num">Q</span> MCQ Quiz Bank</h1>
+  <div class="subtitle">68 questions across 11 topics &middot; includes every official MCQ from the 2023, 2024 &amp; 2025 end-terms</div>
+</div>
+
+<div id="quiz-app">
+
+  <!-- PICKER VIEW -->
+  <div id="pickerView">
+    <div class="full-quiz-card">
+      <h3>🏆 Full Mixed Quiz</h3>
+      <p style="color:var(--muted); margin-top:-4px;">All 68 questions, shuffled, across every topic — the closest thing to a mock end-term MCQ section.</p>
+      <div class="quiz-controls" style="justify-content:center;">
+        <button id="shuffleToggle">🔀 Shuffle: On</button>
+        <button class="primary" id="startFullBtn">▶ Start Full Quiz</button>
+      </div>
+    </div>
+
+    <h3 style="margin-top:8px;">Or drill one topic at a time</h3>
+    <div class="topic-pick-grid" id="topicPickGrid"></div>
+  </div>
+
+  <!-- QUIZ VIEW -->
+  <div id="quizView" style="display:none;">
+    <button class="backBtn" id="backToPickerBtn">← Back to topics</button>
+    <div class="quiz-controls">
+      <span class="quiz-progress" id="progressLabel"></span>
+    </div>
+
+    <div class="score-banner" id="scoreBanner">
+      <h3 id="scoreText"></h3>
+      <p id="scoreSub" style="color:var(--muted)"></p>
+      <div style="display:flex; gap:10px; justify-content:center; margin-top:10px;">
+        <button class="primary" id="retryBtn">↻ Retake This Set</button>
+        <button id="backToPickerBtn2">← Choose Another Topic</button>
+      </div>
+    </div>
+
+    <div id="quizBody"></div>
+    <div id="quiz-summary"></div>
+  </div>
+</div>
+
+<footer>OM-I Study Guide &middot; Built from your course pack &amp; past-year papers (2023, 2024, 2025) &middot; Good luck on the end-term! 🎓</footer>
+</main>
+<div class="backtop" onclick="window.scrollTo({top:0,behavior:'smooth'})" title="Back to top">↑</div>
+<script src="questions_data.js"></script>
+<script src="quiz_engine.js"></script>
+</body>
+</html>

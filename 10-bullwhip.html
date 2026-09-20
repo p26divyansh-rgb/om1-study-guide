@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bullwhip Effect & Supply Chain — OM-I Study Guide</title>
+<link rel="stylesheet" href="styles.css">
+
+</head>
+<body>
+<div class="topbar">
+  <a class="brand" href="index.html">OM-I <span>Study Guide</span></a>
+  <span class="crumb">/ <strong>Bullwhip Effect & Supply Chain</strong></span>
+  <div class="spacer"></div>
+  <select class="jump" onchange="if(this.value) window.location.href=this.value">
+    <option value="">Jump to topic…</option>
+    <option value="01-intro.html" >Introduction to Operations Management</option><option value="02-terminology.html" >Terminology & Little's Law</option><option value="03-codp.html" >CODP & Manufacturing Strategy</option><option value="04-process-matrix.html" >Product/Service–Process Matrix</option><option value="05-layouts.html" >Layouts & Assembly Line Balancing</option><option value="06-mass-customization.html" >Mass Customization</option><option value="07-tps-lean-jit.html" >Toyota Production System, Lean & JIT</option><option value="08-suppliers.html" >Supplier Relationships</option><option value="09-capacity.html" >Strategic Capacity Management</option><option value="10-bullwhip.html" selected>Bullwhip Effect & Supply Chain</option><option value="11-project-management.html" >Project Management: CPM & Crashing</option><option value="12-worked-examples.html" >Worked Numericals</option>
+  </select>
+  <a class="tb-link" href="index.html">🏠 Home</a>
+  <a class="tb-link quiz" href="quiz.html">🎯 Quiz</a>
+</div>
+<main>
+<div class="page-head">
+  <h1><span class="num">10</span> Bullwhip Effect & Supply Chain <span class="examtag">Guaranteed MCQ topic</span></h1>
+  <div class="subtitle">Topic 10 of 12 &middot; Causes, symptoms and remedies of the bullwhip effect, plus the Beer Game takeaways.</div>
+</div><p><strong>Bullwhip Effect</strong>: a small change in actual end-customer demand causes <strong>increasingly amplified</strong> swings in orders as you move upstream through the supply chain (Customer → Retailer → Distributor → Manufacturer → Supplier). Classic demonstration: <strong>the Beer Game</strong>.</p>
+
+    <div class="example">
+      <span class="tag">Numeric feel for it</span>
+      <p>Customer demand rises 100 → 110 (only +10%). Retailer, fearing more growth, orders 125. Distributor sees retailer's jump and orders 150. Manufacturer sees that and produces 180. A tiny real signal becomes a huge upstream swing.</p>
+    </div>
+
+    <h3>Symptoms</h3>
+    <ul>
+      <li>Excessive inventory ("just in case" buffers)</li>
+      <li>Poor demand forecasts</li>
+      <li>Insufficient capacity when a surge hits</li>
+      <li>Long backlogs</li>
+    </ul>
+
+    <h3>Causes (know these — classic MCQ list)</h3>
+    <ol>
+      <li><strong>Demand forecast updating</strong> — each stage forecasts off the orders it receives, not real customer sales, compounding errors.</li>
+      <li><strong>Order batching</strong> — infrequent large orders (0-0-0-400) instead of steady small ones (100-100-100-100) make demand look spikier than it is.</li>
+      <li><strong>Price fluctuations / promotions</strong> — discounts cause forward-buying, misread as a genuine demand increase, followed by a post-promotion crash.</li>
+      <li><strong>Lack of information sharing</strong> — no visibility into true end-customer demand.</li>
+      <li><strong>Long lead times / too many intermediaries</strong> — long lead times push firms to over-order "just in case"; every extra intermediary adds distortion.</li>
+      <li><strong>Disorganization / lack of coordination</strong> — each firm reacts independently to demand changes.</li>
+      <li><strong>Free returns / order cancellation</strong> — firms over-order, planning to cancel/return the excess, creating phantom demand spikes.</li>
+    </ol>
+
+    <h3>Remedies</h3>
+    <ol>
+      <li>Use actual point-of-sale data instead of each tier re-forecasting independently.</li>
+      <li>Break large batches into smaller, more frequent orders.</li>
+      <li>Stabilize prices (Every-Day-Low-Price over frequent promotions).</li>
+      <li>Improve information sharing across the chain (sales, inventory, forecasts, production plans).</li>
+      <li>Respond to demand changes proportionately, not dramatically.</li>
+    </ol>
+
+    <div class="note">The core Beer Game/exam lesson: mitigating the bullwhip effect is fundamentally about <strong>improving information sharing and collaboration</strong> across the whole chain so every tier can see real end-customer demand — not about ordering in isolation or stockpiling more inventory.</div>
+
+    <h3>Pillars of Supply-Chain Coordination</h3>
+    <p class="card">Trust · Coordination · Partnership · Integration — the antidote to the bullwhip effect is treating the supply chain as one coordinated system (as in Toyota's Keiretsu model) rather than a sequence of isolated, self-interested links.</p>
+  <div class="pagenav"><a class="prev" href="09-capacity.html"><span class="dir">← Previous</span><span class="title">Strategic Capacity Management</span></a><a class="next" href="11-project-management.html"><span class="dir">Next →</span><span class="title">Project Management: CPM & Crashing</span></a></div>
+<footer>OM-I Study Guide &middot; Built from your course pack &amp; past-year papers (2023, 2024, 2025)</footer>
+</main>
+<div class="backtop" onclick="window.scrollTo({top:0,behavior:'smooth'})" title="Back to top">↑</div>
+</body>
+</html>
