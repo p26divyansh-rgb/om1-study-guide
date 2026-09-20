@@ -1,0 +1,958 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Operations Management I — Complete Study Guide</title>
+<style>
+:root{
+  --bg:#0f1216; --bg2:#161b22; --card:#1a2029; --card2:#1f2733;
+  --text:#e6e9ef; --muted:#9aa5b1; --accent:#4f9cff; --accent2:#5fd0a8;
+  --warn:#f5a623; --bad:#ff5c6c; --good:#3ddc84; --border:#2a323f;
+  --code:#0d1117;
+}
+@media (prefers-color-scheme: light){
+  :root{
+    --bg:#f5f7fa; --bg2:#ffffff; --card:#ffffff; --card2:#f0f3f7;
+    --text:#1a2029; --muted:#5a6472; --accent:#1868db; --accent2:#0f9d68;
+    --warn:#b5720a; --bad:#c0293b; --good:#1c8a4b; --border:#dde3ea;
+    --code:#eef1f5;
+  }
+}
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  margin:0; font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  background:var(--bg); color:var(--text); line-height:1.6;
+}
+a{color:var(--accent); text-decoration:none;}
+a:hover{text-decoration:underline;}
+
+/* ---- Layout ---- */
+.wrap{display:flex; min-height:100vh;}
+.sidebar{
+  width:260px; flex-shrink:0; background:var(--bg2); border-right:1px solid var(--border);
+  padding:20px 14px; position:sticky; top:0; height:100vh; overflow-y:auto;
+}
+.sidebar h1{font-size:1.05rem; margin:0 0 4px; color:var(--text);}
+.sidebar .sub{font-size:.78rem; color:var(--muted); margin-bottom:18px;}
+.sidebar nav a{
+  display:block; padding:7px 10px; border-radius:8px; font-size:.87rem; color:var(--text);
+  margin-bottom:2px;
+}
+.sidebar nav a:hover{background:var(--card2); text-decoration:none;}
+.sidebar nav a.quiz-link{color:var(--accent2); font-weight:600; margin-top:10px; border-top:1px solid var(--border); padding-top:12px;}
+main{flex:1; padding:36px 44px 100px; max-width:920px;}
+@media (max-width:880px){
+  .wrap{flex-direction:column;}
+  .sidebar{width:100%; height:auto; position:relative; border-right:none; border-bottom:1px solid var(--border);}
+  main{padding:24px 18px 80px;}
+}
+
+/* ---- Typography ---- */
+h1,h2,h3,h4{color:var(--text); line-height:1.3;}
+.hero{margin-bottom:40px;}
+.hero h1{font-size:2rem; margin-bottom:6px;}
+.hero p{color:var(--muted); font-size:1rem;}
+section.topic{margin-bottom:56px; padding-top:8px;}
+section.topic h2{
+  font-size:1.5rem; border-bottom:2px solid var(--accent); padding-bottom:8px; margin-bottom:18px;
+  display:flex; align-items:center; gap:10px;
+}
+section.topic h2 .num{color:var(--accent); font-size:1rem; font-weight:700; background:var(--card2); border-radius:6px; padding:2px 9px;}
+h3{font-size:1.15rem; margin-top:28px; color:var(--accent);}
+h4{font-size:1rem; margin-top:18px; color:var(--text);}
+p{margin:10px 0;}
+ul,ol{margin:8px 0; padding-left:22px;}
+li{margin:4px 0;}
+strong{color:var(--text);}
+
+/* ---- Cards / boxes ---- */
+.card{background:var(--card); border:1px solid var(--border); border-radius:12px; padding:16px 20px; margin:16px 0;}
+.formula{
+  background:var(--code); border:1px solid var(--border); border-left:4px solid var(--accent);
+  border-radius:8px; padding:14px 18px; margin:14px 0; font-family:"SF Mono",Consolas,Menlo,monospace;
+  font-size:.95rem; overflow-x:auto;
+}
+.formula .label{display:block; font-family:inherit; color:var(--accent2); font-size:.78rem; text-transform:uppercase; letter-spacing:.05em; margin-bottom:6px;}
+.example{background:var(--card2); border-radius:10px; padding:14px 18px; margin:14px 0; border:1px dashed var(--border);}
+.example .tag{font-size:.72rem; text-transform:uppercase; letter-spacing:.06em; color:var(--warn); font-weight:700;}
+.note{background:rgba(79,156,255,.08); border-left:4px solid var(--accent); padding:12px 16px; border-radius:6px; margin:14px 0; font-size:.92rem;}
+.examtag{
+  display:inline-block; font-size:.68rem; font-weight:700; text-transform:uppercase; letter-spacing:.05em;
+  background:var(--warn); color:#1a1a1a; border-radius:5px; padding:2px 7px; margin-left:8px; vertical-align:middle;
+}
+table{width:100%; border-collapse:collapse; margin:14px 0; font-size:.92rem;}
+th,td{border:1px solid var(--border); padding:8px 10px; text-align:left;}
+th{background:var(--card2); color:var(--text);}
+.grid2{display:grid; grid-template-columns:1fr 1fr; gap:14px;}
+@media(max-width:640px){.grid2{grid-template-columns:1fr;}}
+.pill{display:inline-block; background:var(--card2); border:1px solid var(--border); border-radius:20px; padding:3px 12px; font-size:.82rem; margin:3px 4px 3px 0;}
+.toc-badge{background:var(--accent); color:#fff; border-radius:50%; width:22px; height:22px; display:inline-flex; align-items:center; justify-content:center; font-size:.7rem; margin-right:6px;}
+
+/* ---- Quiz ---- */
+#quiz-app{margin-top:10px;}
+.quiz-controls{display:flex; flex-wrap:wrap; gap:10px; margin-bottom:20px; align-items:center;}
+select,button{
+  font-family:inherit; font-size:.9rem; padding:8px 14px; border-radius:8px; border:1px solid var(--border);
+  background:var(--card2); color:var(--text); cursor:pointer;
+}
+button.primary{background:var(--accent); color:#fff; border:none; font-weight:600;}
+button.primary:hover{opacity:.9;}
+button:hover{filter:brightness(1.1);}
+.quiz-progress{color:var(--muted); font-size:.85rem; margin-left:auto;}
+.score-banner{
+  display:none; background:var(--card); border:1px solid var(--border); border-radius:12px;
+  padding:20px; text-align:center; margin-bottom:20px;
+}
+.score-banner h3{margin:0 0 6px; font-size:1.6rem;}
+.qcard{background:var(--card); border:1px solid var(--border); border-radius:12px; padding:22px 24px; margin-bottom:16px;}
+.qcard .qtop{display:flex; justify-content:space-between; align-items:baseline; margin-bottom:10px;}
+.qcard .qnum{color:var(--muted); font-size:.8rem; font-weight:700; text-transform:uppercase; letter-spacing:.04em;}
+.qcard .qtopic{color:var(--accent2); font-size:.75rem; font-weight:600; background:rgba(95,208,168,.12); padding:2px 9px; border-radius:12px;}
+.qcard .qtext{font-size:1.05rem; margin:8px 0 16px; color:var(--text);}
+.opt{
+  display:block; width:100%; text-align:left; background:var(--card2); border:1px solid var(--border);
+  border-radius:9px; padding:11px 15px; margin-bottom:9px; cursor:pointer; font-size:.94rem; color:var(--text);
+  transition:background .15s, border-color .15s;
+}
+.opt:hover{border-color:var(--accent);}
+.opt.selected{border-color:var(--accent); background:rgba(79,156,255,.12);}
+.opt.correct{border-color:var(--good); background:rgba(61,220,132,.14); font-weight:600;}
+.opt.incorrect{border-color:var(--bad); background:rgba(255,92,108,.14);}
+.opt:disabled{cursor:default;}
+.explain{
+  display:none; margin-top:12px; padding:12px 15px; border-radius:8px; background:var(--code);
+  font-size:.88rem; border-left:3px solid var(--accent2); color:var(--muted);
+}
+.explain strong{color:var(--text);}
+.quiz-nav{display:flex; justify-content:space-between; margin-top:20px;}
+#quiz-summary{display:none;}
+.summary-row{display:flex; justify-content:space-between; padding:8px 0; border-bottom:1px solid var(--border); font-size:.88rem;}
+.summary-row.wrong{color:var(--bad);}
+.summary-row.right{color:var(--good);}
+footer{color:var(--muted); font-size:.8rem; text-align:center; padding:30px 0; border-top:1px solid var(--border); margin-top:40px;}
+.backtop{position:fixed; bottom:24px; right:24px; background:var(--accent); color:#fff; border-radius:50%; width:44px; height:44px; display:flex; align-items:center; justify-content:center; box-shadow:0 4px 14px rgba(0,0,0,.3); font-size:1.2rem; cursor:pointer; z-index:50;}
+</style>
+</head>
+<body>
+<div class="wrap">
+<aside class="sidebar">
+  <h1>OM-I Study Guide</h1>
+  <div class="sub">Operations Management · End-Term Prep</div>
+  <nav>
+    <a href="#intro">1. Intro to Operations Mgmt</a>
+    <a href="#terminology">2. Terminology &amp; Little's Law</a>
+    <a href="#codp">3. CODP &amp; Order Strategies</a>
+    <a href="#processmatrix">4. Product/Service–Process Matrix</a>
+    <a href="#layouts">5. Layouts &amp; Assembly Lines</a>
+    <a href="#masscustom">6. Mass Customization</a>
+    <a href="#tps">7. TPS, Lean &amp; JIT</a>
+    <a href="#suppliers">8. Supplier Relationships</a>
+    <a href="#capacity">9. Strategic Capacity Mgmt</a>
+    <a href="#bullwhip">10. Bullwhip &amp; Supply Chain</a>
+    <a href="#projects">11. Project Mgmt: CPM &amp; Crashing</a>
+    <a href="#worked">12. Worked Numericals</a>
+    <a href="#quiz" class="quiz-link">🎯 Take the MCQ Quiz</a>
+  </nav>
+</aside>
+
+<main>
+  <div class="hero">
+    <h1>Operations Management I</h1>
+    <p>A complete, exam-focused walkthrough of every topic in your course pack — definitions, formulas, worked examples, and a self-grading MCQ quiz built from your past papers plus extra practice questions.</p>
+  </div>
+
+  <!-- 1. INTRO -->
+  <section class="topic" id="intro">
+    <h2><span class="num">1</span> Introduction to Operations Management</h2>
+
+    <p><strong>Operations</strong> = the processes that produce goods and services. A <strong>process</strong> is a fundamental activity that uses resources to transform inputs into outputs.</p>
+
+    <div class="formula"><span class="label">Transformation model</span>
+INPUT (Material, Machines, Labor, Management, Capital) → TRANSFORMATION PROCESS → OUTPUT (Goods, Services) → Feedback loop back to input
+    </div>
+
+    <p>Six types of transformation: <strong>Physical</strong> (manufacturing), <strong>Locational</strong> (transportation/warehousing), <strong>Exchange</strong> (retail), <strong>Physiological</strong> (healthcare), <strong>Psychological</strong> (entertainment), <strong>Informational</strong> (communications).</p>
+
+    <h3>OM's Four Premises</h3>
+    <ol>
+      <li>All work is a <strong>process</strong>.</li>
+      <li>All processes <strong>can be improved</strong>.</li>
+      <li>Processes are improved by making them better, faster, cheaper, and stronger.</li>
+      <li>Improved processes add more value to customers, shareholders, employees, and society.</li>
+    </ol>
+
+    <h3>The Three Core Business Functions</h3>
+    <div class="grid2">
+      <div class="card"><strong>Marketing</strong><br>Generates demand.</div>
+      <div class="card"><strong>Operations</strong><br>Creates the product/service.</div>
+      <div class="card"><strong>Finance/Accounting</strong><br>Obtains funds &amp; tracks money.</div>
+    </div>
+
+    <h3>Why Study OM?</h3>
+    <ul>
+      <li>It's one of the 3 major functions of every organization.</li>
+      <li>OM is typically the <strong>costliest part</strong> of an organization (biggest lever on profit).</li>
+      <li><strong>Efficiency frontier</strong> concept: a firm wants to (a) eliminate inefficiencies to reach the industry frontier, (b) make smart trade-offs along the frontier (e.g., wait time vs. labor utilization), and (c) redesign operations to push the frontier outward on multiple dimensions at once.</li>
+    </ul>
+
+    <h3>OM's Contribution to Competitive Strategy</h3>
+    <table>
+      <tr><th>Competitive priority</th><th>Meaning</th><th>Example</th></tr>
+      <tr><td>Cost leadership</td><td>Cheaper</td><td>IndiGo's no-frills service</td></tr>
+      <tr><td>Differentiation</td><td>Better (quality/innovation)</td><td>Sony's constant innovation; Steinway pianos</td></tr>
+      <tr><td>Response</td><td>Faster / more dependable / flexible</td><td>Domino's 30-min guarantee; FedEx "absolutely, positively on time"</td></tr>
+    </table>
+
+    <h3>A Brief History of OM (know the timeline!)</h3>
+    <table>
+      <tr><th>Era</th><th>Milestone</th><th>Year</th><th>Person</th></tr>
+      <tr><td rowspan="3">Industrial Revolution</td><td>Steam engine</td><td>1769</td><td>James Watt</td></tr>
+      <tr><td>Division of labor</td><td>1776</td><td>Adam Smith</td></tr>
+      <tr><td>Interchangeable parts</td><td>1790</td><td>Eli Whitney</td></tr>
+      <tr><td rowspan="4">Scientific Management</td><td>Management principles</td><td>1911</td><td>Frederick W. Taylor</td></tr>
+      <tr><td>Time &amp; motion studies</td><td>1911</td><td>Frank &amp; Lillian Gilbreth</td></tr>
+      <tr><td>Activity scheduling (Gantt chart)</td><td>1912</td><td>Henry Gantt</td></tr>
+      <tr><td>Moving assembly line</td><td>1913</td><td>Henry Ford</td></tr>
+      <tr><td rowspan="3">Human Relations</td><td>Hawthorne studies</td><td>1930</td><td>Elton Mayo</td></tr>
+      <tr><td>Motivation theories</td><td>1940s–60s</td><td>Maslow, Herzberg, McGregor</td></tr>
+      <tr><td>—</td><td>—</td><td>—</td></tr>
+      <tr><td rowspan="2">Management Science</td><td>Linear programming</td><td>1947</td><td>George Dantzig</td></tr>
+      <tr><td>MRP</td><td>1960s</td><td>Joseph Orlicky (IBM)</td></tr>
+      <tr><td rowspan="2">Quality Revolution</td><td>JIT</td><td>1970s</td><td>Taiichi Ohno (Toyota)</td></tr>
+      <tr><td>TQM</td><td>1980s</td><td>Deming, Juran</td></tr>
+      <tr><td>Globalization / Internet Age</td><td>Internet, WWW, ERP, e-commerce</td><td>1990s+</td><td>—</td></tr>
+    </table>
+
+    <h3>Critical Decisions in OM</h3>
+    <p class="card">Product &amp; service design · Quality management · Process design · Capacity &amp; facility location · Facility layout · HR &amp; job design · Supply-chain management · Inventory management · Scheduling · Maintenance.</p>
+
+    <div class="note"><strong>Current driving forces (know these for "trend" questions):</strong> Economic (global supply chains, outsourcing, tariffs), Technology (IoT, 3D printing, blockchain, e-commerce), Political/societal (trade wars, pandemics), and Future forces: Sustainability, Social responsibility, Reshoring, Supply-chain financing.</div>
+  </section>
+
+  <!-- 2. TERMINOLOGY & LITTLE'S LAW -->
+  <section class="topic" id="terminology">
+    <h2><span class="num">2</span> Basic OM Terminology &amp; Little's Law <span class="examtag">High-yield</span></h2>
+
+    <p>This is the single most tested block of the course — almost every numerical problem (queueing, capacity, line balancing) is built on these definitions.</p>
+
+    <h3>Core Process Flow Measures</h3>
+    <table>
+      <tr><th>Term</th><th>Definition</th><th>Unit</th></tr>
+      <tr><td><strong>Flow Rate / Throughput (R)</strong></td><td>Average number of flow units passing through the process per unit time</td><td>units/time</td></tr>
+      <tr><td><strong>Flow Time / Throughput Time / Lead Time (T)</strong></td><td>Average time a unit spends within the system (from entry to exit)</td><td>time</td></tr>
+      <tr><td><strong>Inventory / WIP (I)</strong></td><td>Average number of flow units present within the process boundaries at any time</td><td>units</td></tr>
+      <tr><td><strong>Cycle Time (CT)</strong></td><td>Average time between completion of two successive units = 1/R</td><td>time/unit</td></tr>
+      <tr><td><strong>Capacity</strong></td><td>Maximum output achievable under given resources &amp; time</td><td>units/time</td></tr>
+      <tr><td><strong>Utilization</strong></td><td>Flow Rate / Capacity — how much of available capacity is actually used</td><td>%</td></tr>
+      <tr><td><strong>Implied Utilization</strong></td><td>Demand / Capacity — how much capacity would be needed to meet demand</td><td>%</td></tr>
+      <tr><td><strong>Bottleneck</strong></td><td>The process step/resource with the lowest capacity — it limits overall system output. Bottlenecks <em>can shift</em> if the mix or demand changes.</td><td>—</td></tr>
+    </table>
+
+    <h3>Little's Law — THE most important formula in the course</h3>
+    <div class="formula"><span class="label">Little's Law</span>
+I = R × T
+(Inventory = Throughput/Flow Rate × Flow Time)
+
+Rearranged:  T = I / R      R = I / T
+Turnover (inventory turns) = R / I = 1 / T
+    </div>
+
+    <div class="example">
+      <span class="tag">Worked Example — Material Flow</span>
+      <p>A restaurant processes 5,000 kg of potatoes/week. Average raw-potato inventory = 2,500 kg. Find average flow time.</p>
+      <p><strong>R = 5,000 kg/wk, I = 2,500 kg → T = I/R = 2,500/5,000 = 0.5 week</strong></p>
+    </div>
+    <div class="example">
+      <span class="tag">Worked Example — Customer Flow</span>
+      <p>Restaurant serves 1,500 customers/day (15-hr day → 100/hr). On average 75 customers are inside. Find average time spent and turnover.</p>
+      <p><strong>R = 100/hr, I = 75 → T = 75/100 = 0.75 hr = 45 min</strong>. Turnover = R/I = 100/75 = 1.33/hr.</p>
+    </div>
+    <div class="example">
+      <span class="tag">Worked Example — Job Flow (solve for I)</span>
+      <p>An insurance office processes 10,000 claims/year; average processing time = 3 weeks (50-week year). Find average claims "in process".</p>
+      <p><strong>R = 10,000/yr, T = 3/50 yr → I = R×T = 10,000 × 3/50 = 600 claims</strong></p>
+    </div>
+    <div class="example">
+      <span class="tag">Consistency check (classic trick question)</span>
+      <p>A GM says inventory turns 3×/year, and everything clears the dock within 6 weeks. Consistent?</p>
+      <p>Turnover = 3/yr → T = 1/3 year ≈ 17.3 weeks. But claimed T = 6 weeks. <strong>17.3 ≠ 6 → statements are inconsistent.</strong> Always convert to the same time unit before comparing!</p>
+    </div>
+
+    <h3>Manufacturing / Order Fulfilment Strategies</h3>
+    <table>
+      <tr><th>Strategy</th><th>Meaning</th><th>Example</th></tr>
+      <tr><td><strong>MTS</strong> (Make-to-Stock)</td><td>Made in advance, held in inventory before order arrives</td><td>Biscuits, soap</td></tr>
+      <tr><td><strong>ATO</strong> (Assemble-to-Order)</td><td>Standard sub-components pre-built; final assembly after order</td><td>Computers (Dell)</td></tr>
+      <tr><td><strong>MTO</strong> (Make-to-Order)</td><td>Production starts only after the order is received</td><td>Custom furniture</td></tr>
+      <tr><td><strong>ETO</strong> (Engineer-to-Order)</td><td>Product is designed AND made specifically for the customer</td><td>Custom industrial machinery, wind turbines</td></tr>
+    </table>
+
+    <h3>Customer Order Decoupling Point (CODP)</h3>
+    <p>The CODP is the point in the value chain up to which a customer's actual order penetrates (everything before is driven by <strong>forecast/planning</strong>; everything after is driven by <strong>actual demand</strong>). Moving the CODP upstream (toward MTS) improves delivery speed but increases inventory risk; moving it downstream (toward ETO) reduces inventory risk but increases lead time.</p>
+    <div class="grid2">
+      <div class="card"><strong>Market-driven requirements</strong> pushing DP downstream (later):<br>required delivery reliability, required delivery time, predictability &amp; specificity of demand</div>
+      <div class="card"><strong>Process/stock constraints</strong> pushing DP upstream (earlier):<br>long lead times, high changeover costs, poor process control, need for high reliability, cost of stock-holding, risk of obsolescence</div>
+    </div>
+  </section>
+
+  <!-- 3. CODP as strategy already merged above; add extra section id used in nav -->
+  <section class="topic" id="codp">
+    <h2><span class="num">3</span> Manufacturing Strategy Decisions Recap</h2>
+    <p>Tie MTO/MTS/ATO/ETO and CODP back to the <strong>decision hierarchy</strong>:</p>
+    <table>
+      <tr><th>Decision level</th><th>Time horizon</th><th>Example</th></tr>
+      <tr><td>Strategic</td><td>3–5+ years</td><td>Opening a new factory, choosing MTO vs MTS as a business model</td></tr>
+      <tr><td>Tactical</td><td>6 months – 2 years</td><td>Workforce &amp; resource planning</td></tr>
+      <tr><td>Operational</td><td>Day-to-day</td><td>Daily production scheduling</td></tr>
+    </table>
+    <div class="note">Exam angle: given a business scenario, correctly classify whether the decoupling point sits before/after a given stage, and identify whether the company is essentially running MTS/ATO/MTO/ETO.</div>
+  </section>
+
+  <!-- 4. PRODUCT-PROCESS MATRIX -->
+  <section class="topic" id="processmatrix">
+    <h2><span class="num">4</span> Product–Process &amp; Service–Process Matrix</h2>
+
+    <p>The Product-Process Matrix plots <strong>process choice</strong> (vertical) against <strong>volume &amp; standardization</strong> (horizontal). As volume rises and products standardize, firms move down the diagonal toward more efficient, less flexible processes.</p>
+
+    <table>
+      <tr><th>Process type</th><th>Volume</th><th>Variety</th><th>Example</th></tr>
+      <tr><td><strong>Job Shop</strong></td><td>Very low</td><td>Highly customized, one-off</td><td>Custom-made furniture workshop</td></tr>
+      <tr><td><strong>Batch Production</strong></td><td>Low–medium</td><td>Products made in discrete batches/groups</td><td>Bakery: 100 chocolate cakes, changeover, 100 vanilla cakes</td></tr>
+      <tr><td><strong>Mass Production (Assembly Line)</strong></td><td>High</td><td>Large volume of one standardized product</td><td>Car assembly line</td></tr>
+      <tr><td><strong>Continuous Process</strong></td><td>Very high, 24/7</td><td>Little to no variety</td><td>Oil refinery, cement plant</td></tr>
+    </table>
+
+    <h3>Service-Process Matrix (Schmenner)</h3>
+    <p>Analogous matrix for services, axes = degree of labor intensity vs. degree of customer interaction/customization.</p>
+    <table>
+      <tr><th></th><th>Low customer interaction</th><th>High customer interaction</th></tr>
+      <tr><td><strong>Low labor intensity</strong></td><td>Service Factory (airlines, trucking)</td><td>Service Shop (hospitals, auto repair)</td></tr>
+      <tr><td><strong>High labor intensity</strong></td><td>Mass Service (retail, schools)</td><td>Professional Service (doctors, lawyers, consultants)</td></tr>
+    </table>
+    <div class="note">Challenges shift by quadrant: high-interaction services struggle with quality-control consistency and demand management; high-labor-intensity services struggle with hiring/training/scheduling large workforces.</div>
+  </section>
+
+  <!-- 5. LAYOUTS & ASSEMBLY LINE -->
+  <section class="topic" id="layouts">
+    <h2><span class="num">5</span> Facility Layouts &amp; Assembly Line Design/Balancing <span class="examtag">Numerical-heavy</span></h2>
+
+    <h3>Types of Layout</h3>
+    <table>
+      <tr><th>Layout</th><th>Description</th><th>Example</th></tr>
+      <tr><td><strong>Product Layout</strong></td><td>Equipment arranged in the exact sequence of production steps; product moves station to station</td><td>Car assembly line</td></tr>
+      <tr><td><strong>Process Layout</strong></td><td>Similar machines/functions grouped together (departments); products/patients move between departments as needed</td><td>Hospital, machine shop</td></tr>
+      <tr><td><strong>Cellular Layout</strong></td><td>Different machine types grouped into a "cell" that produces a family of similar products</td><td>Furniture manufacturing cell</td></tr>
+      <tr><td><strong>Fixed-Position Layout</strong></td><td>The product stays in one place; workers, equipment &amp; materials come to it</td><td>Ship, aircraft, building construction</td></tr>
+    </table>
+
+    <h3>Labor Specialization on the Assembly Line</h3>
+    <div class="grid2">
+      <div class="card"><strong>Advantages</strong><br>Management: rapid training, easy recruiting, high output from simple repetitive work, close control of workflow.<br>Labor: little education needed, easy to learn the job.</div>
+      <div class="card"><strong>Disadvantages</strong><br>Management: reduced improvement (limited worker perspective), low flexibility to change the line, difficulty controlling quality.<br>Labor: boredom, little control over pace → fatigue/frustration, little chance to advance.</div>
+    </div>
+
+    <h3>Spatial Configurations</h3>
+    <p><strong>Straight Line Design</strong> vs. <strong>U-Shaped Design</strong>. U-shaped lines let one worker handle stations at both the start and end of the line, improve visibility/communication between workers, and make it easier to rebalance the line when demand (and hence required staffing) changes.</p>
+
+    <h3>Assembly Line Balancing — the 8-Step Procedure <span class="examtag">Must know</span></h3>
+    <ol>
+      <li>Draw the precedence diagram (tasks + predecessor relationships).</li>
+      <li>Determine required <strong>workstation cycle time</strong> = Production time available per day / Required output per day.</li>
+      <li>Determine theoretical minimum number of workstations = (Sum of all task times) / Cycle time.</li>
+      <li>Select an assignment rule (e.g., longest task time first, most followers first).</li>
+      <li>Assign tasks one at a time to the first workstation until the sum of task times equals the cycle time, or no other task is feasible (predecessor/time constraint).</li>
+      <li>Repeat step 5 for the next workstation until all tasks are assigned.</li>
+      <li>Compute <strong>line efficiency</strong>.</li>
+      <li>If efficiency is unsatisfactory, rebalance using a different rule.</li>
+    </ol>
+
+    <div class="formula"><span class="label">Line Balancing Formulas</span>
+Cycle Time (CT) = Production time available per day / Required units per day
+
+Theoretical Min. Workstations (N) = ΣTask times / Cycle Time   (round UP)
+
+Line Efficiency = ΣTask times / (Actual no. of workstations × Cycle Time)
+
+Balance Delay = 1 − Efficiency
+
+Labour Content = Sum of all labour (task) times to make one unit
+
+Available Labour Time = Number of workers × Cycle Time
+
+Labour Utilization = Labour Content / Available Labour Time
+    </div>
+
+    <div class="note"><strong>Zoning &amp; personnel constraints</strong> (as tested in the 2025 "Artisan Shirt" question): a single workstation often cannot mix tasks from different process zones (e.g., Cutting/Stitching/Finishing), and a workstation's skill requirement = the highest-skilled task assigned to it (a senior worker CAN do junior tasks, not vice-versa). Always re-verify max daily output, labor cost/unit, and any KPI after re-balancing.</div>
+
+    <h3>Process Batch vs. Transfer Batch</h3>
+    <ul>
+      <li><strong>Process Batch</strong>: number of units processed together at one stage before changing over to a different product/batch.</li>
+      <li><strong>Transfer Batch</strong>: number of units physically moved together from one stage to the next (can be smaller than the process batch — moving in smaller transfer batches overlaps stages and reduces flow time, even though process batch/capacity stays the same).</li>
+    </ul>
+  </section>
+
+  <!-- 6. MASS CUSTOMIZATION -->
+  <section class="topic" id="masscustom">
+    <h2><span class="num">6</span> Mass Customization <span class="examtag">MCQ favorite</span></h2>
+
+    <p><strong>Mass Production</strong> aims for efficiency through stability/control — standardized, low-cost, long product life cycles for large homogeneous markets. <strong>Mass Customization</strong> aims for variety &amp; customization through flexibility and quick response — customized, high-quality, short product life cycles for fragmented/heterogeneous markets. Customization = product variety, so customers must be involved somewhere in the process.</p>
+
+    <h3>The Four Faces of Mass Customization (Gilmore &amp; Pine, HBR 1997)</h3>
+    <table>
+      <tr><th>Type</th><th>Product change?</th><th>Representation change?</th><th>Meaning</th><th>Example</th></tr>
+      <tr><td><strong>Collaborative</strong></td><td>Yes</td><td>Yes</td><td>Company dialogues directly with the customer to design a bespoke product</td><td>Dell: choose your own RAM/CPU/storage; custom sneaker design</td></tr>
+      <tr><td><strong>Adaptive</strong></td><td>Yes (by customer)</td><td>No</td><td>Standard product, but customer can alter/configure it themselves after purchase</td><td>Adjustable office chair</td></tr>
+      <tr><td><strong>Cosmetic</strong></td><td>No</td><td>Yes</td><td>Same core product, different packaging/presentation per customer</td><td>Coca-Cola bottles printed with different names</td></tr>
+      <tr><td><strong>Transparent</strong></td><td>Yes</td><td>No (customer not told explicitly)</td><td>Company customizes based on known customer data, without asking</td><td>Hotel automatically gives a returning guest their preferred pillow</td></tr>
+    </table>
+    <div class="note"><strong>Exam trap:</strong> "Customer designs their own product on a webstore, company manufactures & ships it" → this is <strong>Collaborative</strong> customization (2025 exam Q8), not Adaptive — because the company (not the customer) does the actual physical customization, based on direct interaction/co-design with the customer.</div>
+  </section>
+
+  <!-- 7. TPS / LEAN / JIT -->
+  <section class="topic" id="tps">
+    <h2><span class="num">7</span> Toyota Production System, Lean &amp; JIT <span class="examtag">Very high-yield</span></h2>
+
+    <p>TPS rests on <strong>two pillars</strong>: <strong>Just-in-Time (JIT)</strong> and <strong>Jidoka</strong>.</p>
+
+    <h3>The 3 M's of Waste</h3>
+    <div class="grid2">
+      <div class="card"><strong>Muda</strong> (無駄) — Waste: anything not adding value. 7 classic types: overproduction, waiting, transportation, inefficient/over-processing, excess inventory, unnecessary motion, defects.</div>
+      <div class="card"><strong>Muri</strong> — Overburden: pushing people/equipment beyond natural limits.</div>
+    </div>
+    <div class="card"><strong>Mura</strong> — Unevenness: inconsistent workload/demand fluctuations. (Heijunka directly fights Mura.)</div>
+
+    <h3>Push vs. Pull Systems</h3>
+    <ul>
+      <li><strong>Push:</strong> material is pushed into downstream stations regardless of whether resources/demand are ready (produce-to-forecast).</li>
+      <li><strong>Pull:</strong> material is pulled into a station only when actually needed — driven by real, downstream demand. JIT = producing only what is needed, when needed, in the amount needed. <strong>Kanban cards</strong> are the visual signal that triggers a pull.</li>
+    </ul>
+
+    <h3>Heijunka — Production Leveling</h3>
+    <p>Instead of large batches of one model at a time (AAA→BB→CC), Toyota interleaves a mixed sequence each day (A→B→A→C→A→B) that matches the actual mix of customer demand. This levels workload for the plant and its suppliers, and combats Mura and Muri.</p>
+
+    <h3>Jidoka — "Automation with a Human Touch"</h3>
+    <p>Machines/workers can detect an abnormality and <strong>stop the line immediately</strong> so defects are caught at the source, rather than passed downstream. Origin: Sakichi Toyoda's automatic loom that stopped itself when a thread broke.</p>
+    <ul>
+      <li><strong>Andon</strong> — a visual signal (lamp/cord) a worker pulls to flag a problem and stop the line: Red = stoppage, Yellow = call for help, Green = normal.</li>
+      <li><strong>Poka-Yoke</strong> — mistake-proofing devices (sensors, jigs, alignment pins) designed to prevent defects before they occur (goal: zero defects) — different from Statistical Quality Control, which finds defects <em>after</em> they occur.</li>
+    </ul>
+
+    <h3>Setup Time Reduction (SMED thinking)</h3>
+    <ul>
+      <li><strong>Internal setup</strong>: must be done while the machine is stopped.</li>
+      <li><strong>External setup</strong>: can be done while the machine is still running.</li>
+      <li>Strategy: (1) convert internal setup to external where possible, (2) then streamline what remains internal. Lower setups enable smaller batch sizes without losing throughput.</li>
+    </ul>
+
+    <h3>Kaizen, 5 Whys, PDCA</h3>
+    <ul>
+      <li><strong>Kaizen</strong>: continuous, incremental improvement; a "Kaizen event" is a focused ~5-day team effort to fix a specific process.</li>
+      <li><strong>5 Whys</strong>: ask "why" repeatedly (typically 5×) to drill down from a symptom to its root cause, rather than treating surface symptoms.</li>
+      <li><strong>PDCA / Deming Cycle</strong>: Plan (go to Gemba — the real place — observe the real thing/Gembutsu, get real facts/Genjitsu) → Do (implement, create models of excellence) → Check (align with long-term direction) → Act (sustain &amp; accelerate improvements).</li>
+    </ul>
+
+    <h3>5S Workplace Organization</h3>
+    <table>
+      <tr><th>Japanese</th><th>English</th><th>Meaning</th></tr>
+      <tr><td>Seiri</td><td>Sort</td><td>Keep only what's necessary</td></tr>
+      <tr><td>Seiton</td><td>Straighten/Set in order</td><td>A place for everything</td></tr>
+      <tr><td>Seiso</td><td>Shine/Sweep</td><td>Clean and keep clean</td></tr>
+      <tr><td>Seiketsu</td><td>Standardize</td><td>Apply the first 3S's consistently, plant-wide</td></tr>
+      <tr><td>Shitsuke</td><td>Sustain/Self-discipline</td><td>Make it a habit</td></tr>
+    </table>
+    <p>5S+1S(Safety)=6S; +2S(Safety &amp; Security)=7S. A "Red Tag Attack" flags unused items (30+ days) for removal unless justified.</p>
+
+    <h3>The 14 Toyota Way Principles (grouped)</h3>
+    <ol>
+      <li><strong>Long-term philosophy</strong> over short-term financial gains.</li>
+      <li><strong>Continuous process flow</strong> to surface problems (eliminate Muda).</li>
+      <li><strong>Pull systems / JIT</strong> — avoid overproduction.</li>
+      <li><strong>Heijunka</strong> — level the workload (fight Muda, Muri, Mura).</li>
+      <li><strong>Jidoka</strong> — stop and fix problems to get quality right the first time.</li>
+      <li><strong>Standardized work</strong> as the basis for continuous improvement (+ Poka-Yoke).</li>
+      <li><strong>Visual controls / 5S</strong> so no problem is hidden.</li>
+      <li><strong>Reliable, thoroughly-tested technology</strong> that serves people and process — not tech for its own sake.</li>
+      <li><strong>Grow leaders</strong> who live the philosophy and teach it.</li>
+      <li><strong>Develop exceptional people &amp; teams</strong> who both do the work and improve it.</li>
+      <li><strong>Respect &amp; develop suppliers</strong> as long-term partners, not adversaries.</li>
+      <li><strong>Genchi Genbutsu</strong> — "go and see" for yourself rather than relying only on reports.</li>
+      <li><strong>Decide slowly by consensus, implement rapidly</strong> (nemawashi).</li>
+      <li><strong>Become a learning organization</strong> through relentless reflection (Hansei) and Kaizen.</li>
+    </ol>
+
+    <h3>Total Productive Maintenance (TPM) &amp; Lean Attributes</h3>
+    <p>Lean producers: use JIT to cut inventory, aim for a perfect part every time, reduce space needs, build close/educated supplier relationships, eliminate non-value-add activities, build workforce flexibility (fewer job classes, cross-training), and apply TPM (proactive/preventive equipment maintenance to avoid breakdowns that would stall a low-inventory, tightly-coupled line).</p>
+  </section>
+
+  <!-- 8. SUPPLIERS -->
+  <section class="topic" id="suppliers">
+    <h2><span class="num">8</span> Supplier Relationships</h2>
+    <div class="grid2">
+      <div class="card"><strong>Traditional/Adversarial Vendor Management</strong><br>Multiple competing suppliers played off each other, negotiated purely on price, short-term contracts, low information sharing, suppliers "beaten up" on performance (e.g., pressuring a supplier to abandon a project).</div>
+      <div class="card"><strong>Toyota's Lean / Keiretsu Model</strong><br>Long-term partnerships, trust, mutual knowledge-sharing, suppliers treated as an extension of the firm. Toyota sets high standards and challenges suppliers, but also helps them improve — testing commitment with smaller orders before scaling up to a permanent relationship (from Toyota Way Principle 11).</div>
+    </div>
+    <div class="note">Exam angle: identify whether a described buyer-supplier scenario reflects adversarial/traditional vendor management vs. a Toyota-style Keiretsu partnership, and state the trade-offs (short-term cost savings vs. long-term quality/innovation/resilience).</div>
+  </section>
+
+  <!-- 9. CAPACITY -->
+  <section class="topic" id="capacity">
+    <h2><span class="num">9</span> Strategic Capacity Management <span class="examtag">Lead/Lag is a favorite</span></h2>
+
+    <p><strong>Operations Strategy</strong> = the plan for reconciling market requirements with operations resources. Four decision areas: Capacity, Supply network, Process technology, Development &amp; organisation — judged against 5 customer priorities: quality, speed, dependability, flexibility, cost.</p>
+
+    <p><strong>Capacity</strong> = the throughput/maximum amount a facility can hold, receive, store, or produce in a period. It sets fixed costs and determines whether demand can be met.</p>
+
+    <h3>Three Time Horizons for Capacity Decisions</h3>
+    <table>
+      <tr><th>Horizon</th><th>What you can do</th><th>Examples</th></tr>
+      <tr><td><strong>Short-range</strong></td><td>Use existing capacity better (capacity itself is hard to change)</td><td>Schedule jobs, schedule staff, allocate machinery</td></tr>
+      <tr><td><strong>Intermediate-range</strong></td><td>Moderately adjust capacity</td><td>Subcontract, add shifts/personnel/equipment, build or use inventory</td></tr>
+      <tr><td><strong>Long-range</strong></td><td>Make big, slow-to-reverse capacity changes</td><td>Build new facilities, buy long-lead-time equipment</td></tr>
+    </table>
+
+    <h3>Strategic Capacity Decisions</h3>
+    <ul>
+      <li><strong>What type of fixed capacity?</strong> Manual labor vs. semi-automated vs. fully automated.</li>
+      <li><strong>When/how much to expand?</strong> (see lead/lag below)</li>
+      <li><strong>Where to locate capacity?</strong> Labour, raw materials, market proximity, transport, infrastructure, taxes, political risk, environment.</li>
+    </ul>
+
+    <h3>Managing Demand vs. Capacity Mismatches</h3>
+    <table>
+      <tr><th>Situation</th><th>Short-term fix</th><th>Long-term fix</th></tr>
+      <tr><td>Demand &gt; Capacity</td><td>Raise prices, extend lead times/wait</td><td>Increase capacity</td></tr>
+      <tr><td>Capacity &gt; Demand</td><td>Stimulate demand via marketing/product changes</td><td>Divest / repurpose capacity</td></tr>
+      <tr><td>Seasonal demand</td><td>Offer complementary products that sell in the off-season</td><td>Build flexible/multi-use capacity</td></tr>
+    </table>
+
+    <h3>Economies &amp; Diseconomies of Scale</h3>
+    <p>As output grows toward an optimal size, average unit cost falls (fixed costs spread over more units) = <strong>economies of scale</strong>. Beyond the optimal size, average cost starts rising again (coordination/complexity costs) = <strong>diseconomies of scale</strong>. Classic example: a 25-room motel has higher unit cost than a 50-room motel, but a 75-room motel may again be less efficient to manage. There's a "sweet spot" size.</p>
+
+    <h3>Key Capacity Planning Considerations</h3>
+    <ol>
+      <li>Forecast demand accurately.</li>
+      <li>Understand technology &amp; capacity increments (capacity often comes in fixed-size "chunks" — you can't buy half a machine).</li>
+      <li>Find the optimal operating volume.</li>
+      <li>Build flexibility for future change.</li>
+    </ol>
+
+    <h3>Should Capacity LEAD or LAG Demand? <span class="examtag">Frequently tested</span></h3>
+    <table>
+      <tr><th>Strategy</th><th>Pros</th><th>Cons</th></tr>
+      <tr><td><strong>Lead demand</strong> (build ahead of confirmed need)</td><td>Captures fast-growing demand, avoids lost sales, grabs early market share</td><td>Risk of costly unused/idle capacity if demand disappoints</td></tr>
+      <tr><td><strong>Lag demand</strong> (expand only after demand is confirmed)</td><td>Lower risk, can adopt newer tech later, avoids overspending</td><td>May fail to meet demand short-term, risk of losing market share</td></tr>
+      <tr><td><strong>Middle ground</strong></td><td>Lead in small incremental steps, or track an average level (sometimes ahead, sometimes behind)</td><td>Balances risk vs. responsiveness</td></tr>
+    </table>
+    <div class="note"><strong>Match strategy to product type:</strong> Custom/low-volume/made-to-order operations (bespoke tailoring, custom engineering) should generally <strong>LEAD</strong> demand and stay flexible. Standard/high-volume/made-to-stock commodities (bottled water) should generally <strong>LAG</strong> demand and focus on low cost.</div>
+
+    <h3>Capacity Needs Across the Product Life Cycle</h3>
+    <table>
+      <tr><th>Stage</th><th>What's happening</th><th>Capacity/Ops focus</th></tr>
+      <tr><td>Introduction</td><td>Product is new</td><td>Grab market share; frequent design changes; short, costly runs</td></tr>
+      <tr><td>Growth</td><td>Sales rising fast</td><td>Increase capacity; improve forecasting; strengthen distribution</td></tr>
+      <tr><td>Maturity</td><td>Sales level off</td><td>Optimize capacity; shift to cost-cutting, long stable runs</td></tr>
+      <tr><td>Decline</td><td>Sales falling</td><td>Cost control critical; industry often over-capacity; cut weak products</td></tr>
+    </table>
+    <p><em>Examples: floppy disks = classic decline stage; flat-screen monitors/DVDs were once "introduction".</em></p>
+  </section>
+
+  <!-- 10. BULLWHIP -->
+  <section class="topic" id="bullwhip">
+    <h2><span class="num">10</span> Bullwhip Effect &amp; Supply Chain Coordination <span class="examtag">Guaranteed MCQ topic</span></h2>
+
+    <p><strong>Bullwhip Effect</strong>: a small change in actual end-customer demand causes <strong>increasingly amplified</strong> swings in orders as you move upstream through the supply chain (Customer → Retailer → Distributor → Manufacturer → Supplier). Classic demonstration: <strong>the Beer Game</strong>.</p>
+
+    <div class="example">
+      <span class="tag">Numeric feel for it</span>
+      <p>Customer demand rises 100 → 110 (only +10%). Retailer, fearing more growth, orders 125. Distributor sees retailer's jump and orders 150. Manufacturer sees that and produces 180. A tiny real signal becomes a huge upstream swing.</p>
+    </div>
+
+    <h3>Symptoms</h3>
+    <ul>
+      <li>Excessive inventory ("just in case" buffers)</li>
+      <li>Poor demand forecasts</li>
+      <li>Insufficient capacity when a surge hits</li>
+      <li>Long backlogs</li>
+    </ul>
+
+    <h3>Causes (know these — classic MCQ list)</h3>
+    <ol>
+      <li><strong>Demand forecast updating</strong> — each stage forecasts off the orders it receives, not real customer sales, compounding errors.</li>
+      <li><strong>Order batching</strong> — infrequent large orders (0-0-0-400) instead of steady small ones (100-100-100-100) make demand look spikier than it is.</li>
+      <li><strong>Price fluctuations / promotions</strong> — discounts cause forward-buying, misread as a genuine demand increase, followed by a post-promotion crash.</li>
+      <li><strong>Lack of information sharing</strong> — no visibility into true end-customer demand.</li>
+      <li><strong>Long lead times / too many intermediaries</strong> — long lead times push firms to over-order "just in case"; every extra intermediary adds distortion.</li>
+      <li><strong>Disorganization / lack of coordination</strong> — each firm reacts independently to demand changes.</li>
+      <li><strong>Free returns / order cancellation</strong> — firms over-order, planning to cancel/return the excess, creating phantom demand spikes.</li>
+    </ol>
+
+    <h3>Remedies</h3>
+    <ol>
+      <li>Use actual point-of-sale data instead of each tier re-forecasting independently.</li>
+      <li>Break large batches into smaller, more frequent orders.</li>
+      <li>Stabilize prices (Every-Day-Low-Price over frequent promotions).</li>
+      <li>Improve information sharing across the chain (sales, inventory, forecasts, production plans).</li>
+      <li>Respond to demand changes proportionately, not dramatically.</li>
+    </ol>
+
+    <div class="note">The core Beer Game/exam lesson: mitigating the bullwhip effect is fundamentally about <strong>improving information sharing and collaboration</strong> across the whole chain so every tier can see real end-customer demand — not about ordering in isolation or stockpiling more inventory.</div>
+
+    <h3>Pillars of Supply-Chain Coordination</h3>
+    <p class="card">Trust · Coordination · Partnership · Integration — the antidote to the bullwhip effect is treating the supply chain as one coordinated system (as in Toyota's Keiretsu model) rather than a sequence of isolated, self-interested links.</p>
+  </section>
+
+  <!-- 11. PROJECT MANAGEMENT -->
+  <section class="topic" id="projects">
+    <h2><span class="num">11</span> Project Management: CPM &amp; Crashing <span class="examtag">Always a full numerical question</span></h2>
+
+    <p>A <strong>project</strong> is a unique, one-time set of operations to accomplish objectives within a limited time/cost frame.</p>
+
+    <h3>Key Terms</h3>
+    <div class="pill">Work Breakdown Structure (WBS)</div>
+    <div class="pill">Precedence relations</div>
+    <div class="pill">Network diagram</div>
+    <div class="pill">Early Start / Forward Pass</div>
+    <div class="pill">Late Start / Backward Pass</div>
+    <div class="pill">Gantt chart</div>
+    <div class="pill">Slack / Float</div>
+    <div class="pill">Critical Path</div>
+
+    <div class="formula"><span class="label">Critical Path Method — core formulas</span>
+FORWARD PASS (left to right): computes Earliest Start (ES) and Earliest Finish (EF)
+  ES(activity) = max(EF of all its predecessors)      [ES = 0 for start activities]
+  EF(activity) = ES + Duration
+
+BACKWARD PASS (right to left): computes Latest Start (LS) and Latest Finish (LF)
+  LF(activity) = min(LS of all its successors)        [LF = Project duration, for end activities]
+  LS(activity) = LF − Duration
+
+SLACK (Float) = LS − ES  = LF − EF
+
+CRITICAL PATH = the longest path through the network = path where slack = 0 for every activity
+PROJECT DURATION = length (sum of durations) of the critical path
+    </div>
+
+    <div class="note"><strong>Exam fact (was literally MCQ #10 in 2025):</strong> the total slack of any activity <em>on</em> the critical path is <strong>always zero</strong> — that's the definition of "critical." The critical path itself is the <strong>longest</strong> path (not shortest), and represents the <strong>minimum</strong> possible project duration.</div>
+
+    <div class="example">
+      <span class="tag">Worked Example — Forward/Backward Pass</span>
+      <p>Activities: A(3, no pred) → D(5, pred A) → G(4, pred B,D,E); B(6, no pred); C(2, no pred) → E(2, pred C); A → F(7).</p>
+      <p>Forward pass gives EF: A=3, B=6, C=2, D=8, E=4, F=10, G=12 → <strong>project duration = 12 weeks.</strong></p>
+      <p>Backward pass from LF=12 gives slack: A=0, D=0, G=0 (critical path A–D–G); B has slack 2; C has slack 4; E has slack 4; F has slack 2.</p>
+      <p><strong>Critical Path = A → D → G, Duration = 12 weeks.</strong></p>
+    </div>
+
+    <h3>Project Crashing</h3>
+    <p><strong>Crashing</strong> = spending extra money to shorten a critical activity's duration, in order to shrink total project time (e.g., to avoid a late-delivery penalty).</p>
+    <div class="formula"><span class="label">Crashing rules</span>
+1. Only CRITICAL activities are worth crashing (shortening a non-critical activity doesn't shorten the project).
+2. Crash period-by-period (e.g., one week at a time), re-checking the critical path after each step.
+3. Pick the critical activity with the lowest Cost Slope = (Crash Cost − Normal Cost) / (Normal Time − Crash Time).
+4. Watch out for PARALLEL critical paths — once multiple paths become simultaneously critical, you may need to crash one activity on EACH parallel path (or a shared activity) to gain even one more week.
+    </div>
+    <div class="example">
+      <span class="tag">Worked Example — Crashing</span>
+      <p>Critical path A–D–G (12 weeks). Cost slopes: A=$5,000/wk, D=$4,000/wk, G=$7,000/wk. Cheapest is D → crash D by 1 week → project time = 11 weeks, cost = Normal($61,000) + $4,000 = $65,000.</p>
+      <p>Crash D again → path becomes 10 weeks, but now <strong>3 paths are simultaneously critical</strong>: A-D-G, B-G, A-F. To shrink further, cheapest combo is crashing F and G together ($3,000+$7,000) rather than crashing 3 separate activities — always check whether one shared activity (like A) can shorten multiple paths at once before crashing them individually.</p>
+    </div>
+
+    <h3>Uncertainty &amp; Risk in Projects</h3>
+    <ul>
+      <li>Every activity-time estimate rests on <strong>assumptions</strong> — CPM outputs are only as good as those assumptions.</li>
+      <li>The critical path is <strong>dynamic</strong> — it can shift as activities slip or are crashed.</li>
+      <li>A project manager's job goes well beyond running the CPM calculation.</li>
+    </ul>
+    <table>
+      <tr><th>Risk category</th><th>Examples</th></tr>
+      <tr><td>Financial</td><td>Penalty clauses, exchange-rate swings</td></tr>
+      <tr><td>Marketing</td><td>Demand/market changes, brand image</td></tr>
+      <tr><td>Technology</td><td>Tie-up/partner risk, obsolescence</td></tr>
+      <tr><td>Operations/Execution</td><td>Resource availability, delays in activity durations</td></tr>
+    </table>
+    <p><strong>Managing risk:</strong> maintain redundancy of resources, monitor &amp; report frequently, transfer risk (e.g., contracts/insurance), and share risk with partners.</p>
+  </section>
+
+  <!-- 12. WORKED NUMERICALS -->
+  <section class="topic" id="worked">
+    <h2><span class="num">12</span> Worked Numericals: Inventory Build-Up &amp; Batch Capacity</h2>
+
+    <h3>Inventory Build-Up Diagrams (Queueing over time)</h3>
+    <p>These questions give a time-varying <strong>arrival rate</strong> and a (possibly changing) <strong>service/processing capacity</strong>, and ask you to track the queue over time. Core method:</p>
+    <div class="formula"><span class="label">Queue tracking logic</span>
+For each time interval:
+  Change in Queue = Arrival Rate − Service (Capacity) Rate   [if positive → queue grows; if negative → queue shrinks, floor at 0]
+  Queue(end of interval) = Queue(start) + (Arrival Rate − Capacity) × interval length
+
+Peak Queue = the highest point on this cumulative build-up curve
+Longest wait = found by matching a specific unit's arrival point against the cumulative "departures" curve
+(This is precisely a Little's Law style diagram: the vertical gap between the cumulative-arrivals
+and cumulative-departures curves = instantaneous inventory/queue; the horizontal gap = wait time
+for the unit arriving at that point.)
+    </div>
+    <div class="example">
+      <span class="tag">Style of question (2025 exam: Delhi T3 security)</span>
+      <p>Arrivals vary in three time bands (25/min, then 40/min, then 20/min); capacity = 5 lanes × 5/min = 25/min, with 2 extra lanes triggered once queue &gt; 150, and a machine going offline for a period. You must (a) build the cumulative arrivals vs. departures diagram, (b) find peak queue &amp; when it occurs, (c) find the longest wait and which arrival experiences it, and (d) evaluate a "proactive" policy change (open extra lanes earlier) by comparing peak queue and max wait under both policies.</p>
+      <p><strong>Approach:</strong> break the timeline into pieces wherever arrival rate OR capacity changes; track cumulative queue at each breakpoint; the moment queue crosses a policy threshold (e.g., 150), capacity changes for subsequent intervals too.</p>
+    </div>
+
+    <h3>Batch Processing &amp; Setup-Time Capacity (e.g., Gene Cattie Enterprises case)</h3>
+    <p>When a single resource is shared by multiple products with a <strong>changeover/setup time</strong>, capacity depends on batch size:</p>
+    <div class="formula"><span class="label">Capacity with setup times</span>
+Time per batch = Setup time + (Batch size × Run time per unit)
+
+Effective Capacity (units/time) = Batch size / Time per batch
+
+⇒ Larger batches amortize the fixed setup time over more units → HIGHER effective capacity
+⇒ Smaller batches → more frequent setups → LOWER effective capacity, but LOWER flow time / WIP (Little's Law trade-off!)
+    </div>
+    <div class="note">This is the classic "batch size trade-off": bigger batches raise throughput capacity (fewer setups) but increase average inventory/WIP and flow time (Little's Law: I = R×T — units sit longer waiting for a full batch to complete). Line-balancing and CODP thinking both connect back to this same batch-size vs. flow-time trade-off.</div>
+
+    <h3>Reading a full production system as a chain of resources</h3>
+    <ol>
+      <li>Compute the (batch-adjusted) capacity of <strong>each</strong> resource/department independently.</li>
+      <li>The <strong>system bottleneck</strong> = the resource with the lowest capacity once you account for the actual product mix moving through it (a resource used by multiple products may have less capacity "left over" for one product than it looks like in isolation).</li>
+      <li>System throughput = bottleneck's capacity (you can never produce faster than your slowest necessary resource).</li>
+      <li>Use Little's Law (I = R×T) with the actual inventory data at each stage to compute total average flow time through the whole factory.</li>
+    </ol>
+  </section>
+
+  <!-- QUIZ -->
+  <section class="topic" id="quiz">
+    <h2><span class="num">Q</span> MCQ Quiz Bank</h2>
+    <p>Includes every official MCQ from the <strong>2025</strong> and <strong>2023/2024</strong> end-terms, plus extra practice questions across all topics above. Pick a topic filter (or "All Topics"), hit Start, and answer — you'll get instant feedback with explanations plus a score summary at the end.</p>
+
+    <div id="quiz-app">
+      <div class="quiz-controls">
+        <select id="topicFilter">
+          <option value="all">All Topics (Full Mix)</option>
+        </select>
+        <button class="primary" id="startBtn">▶ Start Quiz</button>
+        <button id="shuffleToggle" title="Shuffle question order">🔀 Shuffle: On</button>
+        <span class="quiz-progress" id="progressLabel"></span>
+      </div>
+
+      <div class="score-banner" id="scoreBanner">
+        <h3 id="scoreText"></h3>
+        <p id="scoreSub" style="color:var(--muted)"></p>
+        <button class="primary" id="retryBtn">↻ Retake Quiz</button>
+      </div>
+
+      <div id="quizBody"></div>
+
+      <div id="quiz-summary"></div>
+    </div>
+  </section>
+
+  <footer>
+    Built from your OM-I course pack &amp; past-year papers (2023, 2024, 2025) · Good luck on the end-term! 🎓
+  </footer>
+</main>
+</div>
+
+<div class="backtop" onclick="window.scrollTo({top:0,behavior:'smooth'})" title="Back to top">↑</div>
+
+<script>
+// ================= QUIZ DATA =================
+const QUESTIONS = [
+  // ---- Bullwhip / Supply Chain (from 2025 & 2023/24 exams + extra) ----
+  {topic:"Bullwhip Effect", q:"The \"bullwhip effect\" in a supply chain, often demonstrated by the Beer Game, refers to:", options:["The phenomenon where consumer demand for a product decreases as it moves up the supply chain.","A surge in production efficiency and accuracy as orders are processed from retailer to manufacturer.","The amplification of demand variability as one moves up the supply chain from the retailer to the manufacturer.","A planned and controlled increase in inventory at each stage of the supply chain to prevent stockouts."], answer:2, explain:"The bullwhip effect is the progressive amplification of order variability as you move upstream from retailer to manufacturer to supplier."},
+  {topic:"Bullwhip Effect", q:"Which of the following is a primary cause of the bullwhip effect, as illustrated in the Beer Game?", options:["Perfect and instantaneous communication between all levels of the supply chain.","Stable and predictable consumer demand with no fluctuations.","Lack of visibility into end-customer demand and long lead times between ordering and receiving goods.","The immediate fulfillment of all orders at every stage of the supply chain without any delays."], answer:2, explain:"Poor visibility into real end-customer demand combined with long lead times causes each tier to over-react and over-order."},
+  {topic:"Bullwhip Effect", q:"A key takeaway from playing the Beer Game is that to mitigate the bullwhip effect, companies should focus on:", options:["Increasing their inventory levels at every stage to buffer against any possible demand shifts.","Making ordering decisions in isolation, based only on the orders received from the immediate downstream partner.","Improving information sharing and collaboration across the entire supply chain to enhance visibility of actual end-consumer demand.","Lengthening lead times to allow for more careful and deliberate order processing."], answer:2, explain:"Sharing real point-of-sale/demand data and collaborating across the chain is the standard remedy, not stockpiling or acting in isolation."},
+  {topic:"Bullwhip Effect", q:"Which of these is NOT a recognized cause of the bullwhip effect?", options:["Order batching / large lot sizes","Promotional price fluctuations","Perfectly shared, real-time point-of-sale data across all tiers","Free returns / order cancellation policies"], answer:2, explain:"Perfectly shared real-time POS data is the CURE for the bullwhip effect, not a cause of it."},
+  {topic:"Bullwhip Effect", q:"A retailer needing 100 units/week instead orders 0-0-0-400 over four weeks. This is an example of which bullwhip cause?", options:["Demand forecast updating","Order batching","Price fluctuation","Genchi Genbutsu"], answer:1, explain:"Batching many weeks of demand into one large periodic order (order batching) creates artificial spikes upstream even though real demand is steady."},
+
+  // ---- TPS / Lean / JIT ----
+  {topic:"TPS / Lean / JIT", q:"A manufacturing plant implements a \"pull system\" based on TPS principles. What is the primary objective of this system?", options:["To maximize the production of components to ensure there are no stockouts.","To produce goods in large batches to achieve economies of scale.","To empower workers to stop the production line whenever they detect a defect.","To produce only what is needed by the next process in the production flow, driven by actual customer demand."], answer:3, explain:"A pull system (JIT) triggers production only from real downstream demand — the opposite of push/forecast-driven batch production."},
+  {topic:"TPS / Lean / JIT", q:"Which scenario best exemplifies the TPS concept of Jidoka (autonomation)?", options:["A company installs a fully automated robotic arm that operates 24/7 without any human oversight.","An assembly line machine is equipped with a sensor that automatically stops the machine and alerts an operator if it detects a malfunction.","A manager implements a suggestion box where employees can submit ideas for process improvements.","The company cross-trains employees to perform multiple tasks, increasing workforce flexibility."], answer:1, explain:"Jidoka = automation with a human touch: a machine detects an abnormality and stops itself, alerting a human — quality built into the process."},
+  {topic:"TPS / Lean / JIT", q:"A factory producing several models implements Heijunka. Which best represents this?", options:["Producing one model for an entire week before switching to minimize changeover time.","Producing models in the same fixed sequence every day regardless of order fluctuations.","Leveling production by producing a mixed-model sequence each day to match the variety of customer demand.","Prioritizing the most popular model and only producing others when there is spare capacity."], answer:2, explain:"Heijunka levels production by interleaving a representative mix of models daily, matching actual demand variety rather than batching by model."},
+  {topic:"TPS / Lean / JIT", q:"The \"Five Whys\" technique is primarily used to:", options:["Brainstorm at least five potential solutions to a problem.","Identify the root cause of a problem by repeatedly asking \"why\".","Assign blame for a problem to five different departments.","Create a five-step plan for implementing a solution."], answer:1, explain:"5 Whys is a root-cause-analysis technique: repeatedly asking why drills past symptoms to the underlying cause."},
+  {topic:"TPS / Lean / JIT", q:"What does \"Muri\" refer to in the Toyota Production System's waste framework?", options:["Waste from non-value-adding activity","Unevenness in workload or demand","Overburdening of people or equipment","Waiting time between process steps"], answer:2, explain:"Muri = overburden (pushing people/machines beyond reasonable limits). Muda = waste, Mura = unevenness."},
+  {topic:"TPS / Lean / JIT", q:"Converting an \"internal setup\" activity to an \"external setup\" activity means:", options:["Making the setup step slower but more reliable","Performing that setup activity while the machine keeps running, instead of while it is stopped","Outsourcing the setup task to a third-party vendor","Eliminating the setup activity entirely"], answer:1, explain:"External setup = work that can be done while the machine is still running; converting internal→external is the first SMED strategy to cut changeover downtime."},
+  {topic:"TPS / Lean / JIT", q:"In the 5S methodology, \"Seiton\" means:", options:["Sort — keep only what's necessary","Straighten / Set in order — a designated place for everything","Shine — clean the workplace","Sustain — maintain discipline over time"], answer:1, explain:"Seiton = Straighten/Set in order (organize so everything has a fixed place). Seiri=Sort, Seiso=Shine, Seiketsu=Standardize, Shitsuke=Sustain."},
+  {topic:"TPS / Lean / JIT", q:"Which is one of the two pillars of the Toyota Production System?", options:["Total Quality Management and Six Sigma","Just-in-Time and Jidoka","Kanban and ERP","Outsourcing and Automation"], answer:1, explain:"TPS rests on two pillars: Just-in-Time (JIT) and Jidoka (autonomation)."},
+  {topic:"TPS / Lean / JIT", q:"An Andon lamp turning RED on an assembly line signals:", options:["Normal operation, no action needed","A request for supervisor help but the line keeps running","A full line stoppage due to a detected problem","Scheduled maintenance is starting"], answer:2, explain:"Red = line stoppage. Yellow = call for help. Green = normal operation."},
+
+  // ---- Mass Customization ----
+  {topic:"Mass Customization", q:"A webstore lets customers design their own sneakers (colors, materials, personalized text); the company manufactures and ships the unique pair. Which type of mass customization is this?", options:["Collaborative Customization","Transparent Customization","Adaptive Customization","Cosmetic Customization"], answer:0, explain:"The firm directly interacts with the customer to co-design a unique product before manufacturing it — this is Collaborative Customization."},
+  {topic:"Mass Customization", q:"A hotel automatically gives a returning guest their preferred pillow type based on past stays, without telling them explicitly. This is:", options:["Collaborative Customization","Transparent Customization","Adaptive Customization","Cosmetic Customization"], answer:1, explain:"Transparent customization: the firm customizes based on known customer data without the customer explicitly requesting or being told."},
+  {topic:"Mass Customization", q:"An adjustable office chair that customers can reconfigure themselves after purchase illustrates:", options:["Cosmetic Customization","Collaborative Customization","Adaptive Customization","Transparent Customization"], answer:2, explain:"Adaptive customization: the company offers one standard but customizable product, letting the customer alter it themselves."},
+  {topic:"Mass Customization", q:"Coca-Cola selling identical bottles but printing different customer names on the label is an example of:", options:["Cosmetic Customization","Adaptive Customization","Transparent Customization","Collaborative Customization"], answer:0, explain:"Cosmetic customization keeps the core product identical, changing only packaging/presentation per customer."},
+  {topic:"Mass Customization", q:"Mass customization, compared to mass production, is best associated with:", options:["Long product life cycles and stable, homogeneous demand","Short product life cycles and fragmented, heterogeneous demand","Elimination of all customer involvement in the process","Elimination of product variety to cut costs"], answer:1, explain:"Mass customization targets fragmented/heterogeneous demand with short product life cycles and high variety, requiring customer involvement."},
+
+  // ---- Project Management / CPM ----
+  {topic:"Project Management", q:"In project management, what does the 'critical path' represent?", options:["The longest sequence of dependent tasks that determines the minimum time to complete the project.","A list of all the tasks in the project that can be delayed without affecting the project deadline.","The longest possible time in which a project can be completed.","The sequence of tasks that have the most float or slack."], answer:0, explain:"The critical path is the longest chain of dependent activities, and it fixes the minimum possible project duration."},
+  {topic:"Project Management", q:"What is the total slack of an activity on the critical path?", options:["It depends on the duration of the activity.","It is always zero.","It is always positive.","It is always negative."], answer:1, explain:"By definition, critical-path activities have zero slack — any delay to them delays the whole project."},
+  {topic:"Project Management", q:"The 'backward pass' in CPM is used to calculate:", options:["Early Start (ES) and Early Finish (EF) times","Late Start (LS) and Late Finish (LF) times","The total project budget","The number of resources required"], answer:1, explain:"Forward pass → ES/EF (left to right). Backward pass → LS/LF (right to left, from project end back to start)."},
+  {topic:"Project Management", q:"When crashing a project to shorten its duration, which activities should you crash first?", options:["Any activity, regardless of whether it is on the critical path","Only critical-path activities, starting with the lowest cost slope","Only the longest-duration activity in the whole project","Non-critical activities with the most slack"], answer:1, explain:"Only shortening critical-path activities reduces project duration, and among those you pick the cheapest (lowest cost-slope) option first."},
+  {topic:"Project Management", q:"Cost slope for crashing an activity is calculated as:", options:["Normal Cost / Normal Time","(Crash Cost − Normal Cost) / (Normal Time − Crash Time)","(Normal Time − Crash Time) / (Crash Cost − Normal Cost)","Crash Cost × Crash Time"], answer:1, explain:"Cost slope = extra cost per unit time saved = (Crash Cost − Normal Cost) / (Normal Time − Crash Time)."},
+  {topic:"Project Management", q:"If two parallel paths both become critical after some crashing, to shorten the project by one more week you generally need to:", options:["Crash any single activity on either path","Crash an activity on EACH critical path simultaneously (or a shared activity), whichever is cheaper", "Stop crashing since it's now impossible to shorten further","Crash only the path with the higher total cost"], answer:1, explain:"Once multiple paths are simultaneously critical, shortening only one of them won't reduce project duration — you must shorten all critical paths together (or find one shared activity that covers several)."},
+  {topic:"Project Management", q:"Which of these is a project risk category commonly discussed alongside CPM/uncertainty?", options:["Only technology risk matters; others are irrelevant","Financial, Marketing, Technology, and Operations/Execution risks", "Only the project manager's personal risk", "Risk categories don't apply once the critical path is computed"], answer:1, explain:"The four broad risk categories are Financial (penalties, FX), Marketing (demand shifts), Technology (obsolescence/tie-ups), and Operations/Execution (resource/delay risk)."},
+
+  // ---- Terminology / Little's Law ----
+  {topic:"Terminology & Little's Law", q:"Little's Law states that:", options:["Inventory = Throughput ÷ Flow Time","Inventory = Throughput × Flow Time","Flow Time = Throughput × Inventory","Throughput = Inventory × Flow Time"], answer:1, explain:"Little's Law: I = R × T (Inventory = Throughput/Flow-Rate × Flow Time)."},
+  {topic:"Terminology & Little's Law", q:"A claims office processes 10,000 claims/year with an average processing time of 3 weeks (50-week year). Using Little's Law, the average number of claims 'in process' is:", options:["300 claims","600 claims","3,000 claims","166 claims"], answer:1, explain:"I = R × T = 10,000/yr × (3/50 yr) = 600 claims."},
+  {topic:"Terminology & Little's Law", q:"'Utilization' in process analysis is defined as:", options:["Demand ÷ Capacity","Flow Rate ÷ Capacity","Capacity ÷ Flow Rate","Inventory ÷ Flow Time"], answer:1, explain:"Utilization = actual Flow Rate ÷ Capacity (how much of available capacity is actually being used)."},
+  {topic:"Terminology & Little's Law", q:"'Implied Utilization' is defined as:", options:["Flow Rate ÷ Capacity","Capacity ÷ Demand","Demand ÷ Capacity","Inventory ÷ Throughput"], answer:2, explain:"Implied Utilization = Demand ÷ Capacity — it can exceed 100%, signaling the resource cannot keep up with demand."},
+  {topic:"Terminology & Little's Law", q:"A process bottleneck is best described as:", options:["The first step in any process","The resource/step with the LOWEST capacity, limiting overall system output","The step with the highest inventory","A step that never changes once identified"], answer:1, explain:"The bottleneck is whichever resource has the least capacity relative to the work required of it; note that bottlenecks CAN shift if demand mix changes."},
+  {topic:"Terminology & Little's Law", q:"Cycle Time (CT) is best described as:", options:["The maximum output a system can ever produce","The average time between completion of two successive units (=1/Throughput)","The total time to design a new product","The time a customer waits before an order is even placed"], answer:1, explain:"Cycle time = average time between completions of successive units, i.e., the reciprocal of throughput rate."},
+  {topic:"Terminology & Little's Law", q:"A GM states inventory turns 3 times a year, and everything clears the dock in 6 weeks. Are these statements consistent?", options:["Yes, both imply the same flow time of 6 weeks","No — 3 turns/year implies a flow time of about 17.3 weeks, not 6","Yes, because turnover and flow time are unrelated","Cannot be determined without more information"], answer:1, explain:"Turnover = 1/T, so T = 1/3 year ≈ 17.3 weeks, which contradicts the claimed 6-week flow time."},
+  {topic:"Terminology & Little's Law", q:"Which manufacturing strategy involves designing AND making a product specifically to a customer's unique specification (e.g., custom industrial machinery)?", options:["Make-to-Stock (MTS)","Assemble-to-Order (ATO)","Make-to-Order (MTO)","Engineer-to-Order (ETO)"], answer:3, explain:"ETO involves custom engineering/design work in addition to custom manufacturing — the deepest level of customization."},
+  {topic:"Terminology & Little's Law", q:"The Customer Order Decoupling Point (CODP) separates:", options:["Marketing activities from Finance activities","Forecast/planning-driven upstream activity from actual-demand-driven downstream activity","Domestic operations from international operations","Quality control from production scheduling"], answer:1, explain:"Before the CODP, production is driven by forecasts/planning (make to stock/anticipation); after it, production is driven by the actual customer order."},
+
+  // ---- Layouts & Assembly Line ----
+  {topic:"Layouts & Assembly Line", q:"In assembly line balancing, the theoretical minimum number of workstations is calculated as:", options:["Cycle Time ÷ Sum of task times","Sum of task times ÷ Cycle Time","Sum of task times × Cycle Time","Number of tasks ÷ Cycle Time"], answer:1, explain:"Theoretical minimum workstations N = ΣTask times / Cycle Time (rounded up)."},
+  {topic:"Layouts & Assembly Line", q:"Line efficiency in assembly-line balancing is calculated as:", options:["ΣTask times ÷ (Actual workstations × Cycle Time)","(Actual workstations × Cycle Time) ÷ ΣTask times","Cycle Time ÷ ΣTask times","Number of workstations ÷ Number of tasks"], answer:0, explain:"Efficiency = ΣTask times / (Actual number of workstations × Cycle Time); Balance Delay = 1 − Efficiency."},
+  {topic:"Layouts & Assembly Line", q:"Which layout arranges equipment in the exact sequence of production steps, with the product moving from one station to the next?", options:["Process Layout","Product Layout","Fixed-Position Layout","Cellular Layout"], answer:1, explain:"Product layout follows the production sequence station-by-station, e.g. a car assembly line."},
+  {topic:"Layouts & Assembly Line", q:"A hospital, where similar equipment/specialties are grouped into departments and patients move between departments as needed, is an example of:", options:["Product Layout","Process Layout","Cellular Layout","Fixed-Position Layout"], answer:1, explain:"Process layout groups similar functions/machines together; the flow unit moves to whichever department it needs next."},
+  {topic:"Layouts & Assembly Line", q:"Building a ship or an aircraft, where the product stays in one place and workers/equipment come to it, is an example of:", options:["Product Layout","Process Layout","Cellular Layout","Fixed-Position Layout"], answer:3, explain:"Fixed-position layout: the (typically large/immobile) product stays put; labor and resources move to it."},
+  {topic:"Layouts & Assembly Line", q:"Available Labour Time on an assembly line is calculated as:", options:["Number of workers × Cycle Time","Number of workers ÷ Cycle Time","Labour Content × Number of workers","Cycle Time ÷ Number of workers"], answer:0, explain:"Available Labour Time = Number of workers × Cycle Time."},
+  {topic:"Layouts & Assembly Line", q:"A disadvantage of high labor specialization on an assembly line, FROM THE WORKER's perspective, is:", options:["Difficulty recruiting new staff","Boredom and little control over work pace, leading to fatigue","Higher wages due to skill requirements","Increased flexibility to switch tasks"], answer:1, explain:"For labor, specialization's downsides include boredom, low control over pace, and little opportunity for advancement."},
+  {topic:"Layouts & Assembly Line", q:"In line balancing with zoning constraints, if a workstation combines a Junior-Operator task and a Senior-Tailor task, what personnel does that workstation require?", options:["Junior Operator, since most tasks are simple","Senior Tailor, since a workstation takes the skill level of its highest-skilled task","Either, chosen at random each day","Two workers, one of each type, always"], answer:1, explain:"A workstation's required skill = the highest-skilled task assigned to it (a senior worker can do junior tasks, but not vice-versa)."},
+
+  // ---- Capacity Management ----
+  {topic:"Capacity Management", q:"For a custom, made-to-order business (e.g., bespoke tailoring), the generally recommended capacity strategy is to:", options:["Lag demand to minimize risk","Lead demand and stay flexible","Ignore capacity planning entirely","Always operate at 100% utilization"], answer:1, explain:"Custom/low-volume operations should generally lead demand to avoid losing custom orders and to capture market share early, since flexibility (not scale efficiency) is the priority."},
+  {topic:"Capacity Management", q:"For a standardized, high-volume, made-to-stock commodity (e.g., bottled water), the generally recommended capacity strategy is to:", options:["Lead demand aggressively","Lag demand, expanding only once demand is confirmed","Randomize expansion timing","Never expand capacity"], answer:1, explain:"Standardized high-volume products benefit from lagging demand — expanding only once growth is confirmed, keeping a low-cost focus."},
+  {topic:"Capacity Management", q:"'Diseconomies of scale' refers to:", options:["Average unit cost continuing to fall no matter how large the operation grows","Average unit cost beginning to rise again once a business grows beyond its optimal size","A situation where fixed costs disappear entirely","Average cost always being independent of scale"], answer:1, explain:"Beyond an optimal size, complexity/coordination costs can make average unit cost rise again — diseconomies of scale."},
+  {topic:"Capacity Management", q:"Which capacity decision belongs to the SHORT-RANGE time horizon?", options:["Building a new factory","Scheduling jobs and staff on existing equipment","Subcontracting extra production for the quarter","Buying long-lead-time equipment"], answer:1, explain:"Short-range planning uses EXISTING capacity better (job/staff scheduling); it doesn't change capacity itself."},
+  {topic:"Capacity Management", q:"During the DECLINE stage of a product's life cycle, the typical capacity/operations focus is:", options:["Aggressively expanding capacity to capture growth","Cost control, since the industry often has excess capacity and weak products get cut","Frequent design changes and short production runs","Ignoring cost and focusing purely on availability"], answer:1, explain:"In decline, sales fall, the industry typically has too much capacity, and firms focus on cost control and pruning weak products."},
+
+  // ---- Product/Service-Process Matrix ----
+  {topic:"Process Matrix", q:"A bakery that makes 100 chocolate cakes, changes setup, then makes 100 vanilla cakes is an example of:", options:["Job shop production","Batch production","Mass production","Continuous production"], answer:1, explain:"Batch production processes discrete groups (batches) of a product before switching over to the next."},
+  {topic:"Process Matrix", q:"An oil refinery running 24/7 with very little product variety exemplifies:", options:["Job shop","Batch process","Mass production","Continuous process"], answer:3, explain:"Continuous process: very high volume, minimal variety, runs around the clock — refineries, cement plants."},
+  {topic:"Process Matrix", q:"In the Product-Process Matrix, moving from Job Shop toward Continuous Process generally corresponds to:", options:["Decreasing volume, increasing customization","Increasing volume, increasing standardization","No change in volume or standardization","Decreasing standardization at constant volume"], answer:1, explain:"The matrix's diagonal moves from low-volume/high-customization (job shop) to high-volume/high-standardization (continuous process)."},
+  {topic:"Process Matrix", q:"In the Service-Process Matrix, a hospital or auto-repair shop (low labor intensity, high customer interaction/customization) is classified as:", options:["Service Factory","Service Shop","Mass Service","Professional Service"], answer:1, explain:"Service Shop = low labor intensity + high customer interaction/customization (hospitals, auto repair)."},
+
+  // ---- Supplier Relationships ----
+  {topic:"Supplier Relationships", q:"Toyota's approach to supplier relationships (Keiretsu model) is best characterized by:", options:["Short-term contracts awarded purely on lowest price","Long-term partnership, trust, and mutual knowledge-sharing","Frequently switching suppliers to maximize leverage","Withholding all information from suppliers to protect trade secrets"], answer:1, explain:"Toyota treats suppliers as long-term partners (Keiretsu), building trust and sharing knowledge — very different from adversarial, price-only vendor management."},
+  {topic:"Supplier Relationships", q:"Traditional/adversarial vendor management is typically characterized by:", options:["Long-term trust-based partnerships","Playing suppliers off against each other mainly on price, with short-term contracts","Toyota-style mutual investment in supplier development","High information sharing across the whole chain"], answer:1, explain:"Traditional vendor management is transactional and price-driven, often pitting suppliers against each other with short-term contracts."},
+
+  // ---- Mixed / General OM ----
+  {topic:"General OM", q:"Which historical milestone is correctly paired with its originator?", options:["Moving assembly line — Henry Gantt (1913)","Division of labor — Adam Smith (1776)","Time and motion studies — Frederick Taylor (1911)","Interchangeable parts — James Watt (1790)"], answer:1, explain:"Division of labor = Adam Smith (1776). Moving assembly line = Henry Ford (1913). Time & motion studies = Gilbreths (1911). Interchangeable parts = Eli Whitney (1790)."},
+  {topic:"General OM", q:"Which of these is NOT one of the three major functions common to every organization, per OM theory?", options:["Marketing","Operations","Finance/Accounting","Legal/Compliance"], answer:3, explain:"The three classic organizational functions taught in OM are Marketing, Operations, and Finance/Accounting."},
+  {topic:"General OM", q:"'All processes can be improved' is which OM premise?", options:["Premise 1","Premise 2","Premise 3","Premise 4"], answer:1, explain:"Premise 1: All work is a process. Premise 2: All processes can be improved. Premise 3: improved via better/faster/cheaper/stronger. Premise 4: value added to stakeholders."},
+  {topic:"General OM", q:"Process Batch and Transfer Batch differ in that:", options:["They are always identical in size","Process batch = units processed together at a stage; Transfer batch = units physically moved together to the next stage (can be smaller)","Transfer batch is always larger than process batch","Neither concept relates to flow time"], answer:1, explain:"Using a smaller transfer batch than the process batch lets stages overlap, reducing overall flow time — a key lean lever independent of the process batch size."},
+];
+
+// ================= QUIZ ENGINE =================
+let activeSet = [];
+let idx = 0;
+let userAnswers = [];
+let shuffleOn = true;
+
+const topicFilter = document.getElementById('topicFilter');
+const topics = [...new Set(QUESTIONS.map(q=>q.topic))];
+topics.forEach(t=>{
+  const o = document.createElement('option');
+  o.value = t; o.textContent = t;
+  topicFilter.appendChild(o);
+});
+
+function shuffleArr(arr){
+  const a = arr.slice();
+  for(let i=a.length-1;i>0;i--){
+    const j = Math.floor(Math.random()*(i+1));
+    [a[i],a[j]]=[a[j],a[i]];
+  }
+  return a;
+}
+
+document.getElementById('shuffleToggle').addEventListener('click', function(){
+  shuffleOn = !shuffleOn;
+  this.textContent = shuffleOn ? '🔀 Shuffle: On' : '🔀 Shuffle: Off';
+});
+
+document.getElementById('startBtn').addEventListener('click', startQuiz);
+document.getElementById('retryBtn').addEventListener('click', startQuiz);
+
+function startQuiz(){
+  const t = topicFilter.value;
+  let set = t === 'all' ? QUESTIONS.slice() : QUESTIONS.filter(q=>q.topic===t);
+  if(shuffleOn) set = shuffleArr(set);
+  activeSet = set;
+  idx = 0;
+  userAnswers = new Array(activeSet.length).fill(null);
+  document.getElementById('scoreBanner').style.display = 'none';
+  document.getElementById('quiz-summary').style.display = 'none';
+  document.getElementById('quiz-summary').innerHTML = '';
+  renderQuestion();
+}
+
+function renderQuestion(){
+  const body = document.getElementById('quizBody');
+  const progress = document.getElementById('progressLabel');
+  if(activeSet.length===0){ body.innerHTML=''; progress.textContent=''; return; }
+  progress.textContent = `Question ${idx+1} of ${activeSet.length}`;
+  const item = activeSet[idx];
+  const answered = userAnswers[idx] !== null;
+
+  let optsHtml = item.options.map((opt,i)=>{
+    let cls = 'opt';
+    if(answered){
+      if(i === item.answer) cls += ' correct';
+      else if(i === userAnswers[idx] && i !== item.answer) cls += ' incorrect';
+    }
+    return `<button class="${cls}" data-i="${i}" ${answered?'disabled':''}>${String.fromCharCode(65+i)}. ${opt}</button>`;
+  }).join('');
+
+  body.innerHTML = `
+    <div class="qcard">
+      <div class="qtop">
+        <span class="qnum">Question ${idx+1}</span>
+        <span class="qtopic">${item.topic}</span>
+      </div>
+      <div class="qtext">${item.q}</div>
+      ${optsHtml}
+      <div class="explain" id="explainBox" style="display:${answered?'block':'none'}">
+        <strong>${answered ? (userAnswers[idx]===item.answer ? '✅ Correct. ' : '❌ Not quite. ') : ''}</strong>${item.explain}
+      </div>
+      <div class="quiz-nav">
+        <button id="prevBtn" ${idx===0?'disabled':''}>← Previous</button>
+        <button class="primary" id="nextBtn">${idx===activeSet.length-1 ? 'Finish Quiz' : 'Next →'}</button>
+      </div>
+    </div>
+  `;
+
+  body.querySelectorAll('.opt').forEach(btn=>{
+    btn.addEventListener('click', function(){
+      if(userAnswers[idx] !== null) return;
+      userAnswers[idx] = parseInt(this.dataset.i);
+      renderQuestion();
+    });
+  });
+  document.getElementById('prevBtn').addEventListener('click', ()=>{ idx--; renderQuestion(); });
+  document.getElementById('nextBtn').addEventListener('click', ()=>{
+    if(idx < activeSet.length-1){ idx++; renderQuestion(); }
+    else finishQuiz();
+  });
+}
+
+function finishQuiz(){
+  const total = activeSet.length;
+  let correct = 0;
+  activeSet.forEach((item,i)=>{ if(userAnswers[i]===item.answer) correct++; });
+  const pct = Math.round((correct/total)*100);
+  document.getElementById('quizBody').innerHTML = '';
+  document.getElementById('progressLabel').textContent = '';
+  const banner = document.getElementById('scoreBanner');
+  banner.style.display = 'block';
+  document.getElementById('scoreText').textContent = `${correct} / ${total} correct (${pct}%)`;
+  let msg = pct>=85 ? "Excellent — you're exam-ready! 🎯" : pct>=60 ? "Solid, but review the missed topics below." : "Keep reviewing — revisit the sections tied to your misses below.";
+  document.getElementById('scoreSub').textContent = msg;
+
+  const summary = document.getElementById('quiz-summary');
+  summary.style.display = 'block';
+  summary.innerHTML = '<h3 style="margin-top:0">Review</h3>' + activeSet.map((item,i)=>{
+    const ua = userAnswers[i];
+    const right = ua === item.answer;
+    return `<div class="summary-row ${right?'right':'wrong'}">
+      <span>${i+1}. [${item.topic}] ${item.q.substring(0,70)}${item.q.length>70?'…':''}</span>
+      <span>${right ? '✅' : '❌ (Correct: '+String.fromCharCode(65+item.answer)+')'}</span>
+    </div>`;
+  }).join('');
+  window.scrollTo({top: document.getElementById('quiz').offsetTop - 20, behavior:'smooth'});
+}
+</script>
+</body>
+</html>
